@@ -1,0 +1,56 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio files
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.ds_store
+*.cache
+*.csproj.csdat
+*.swp
+*.[Cc]ache
+*.[Oo]bj
+*.[Cc]sproj.files
+*.[Cc]sproj.user
+*.sln.docstates
+
+# Tooling
+_ReSharper*/
+_TeamCity*
+
+# Project files
+*.pidb
+*.sdf
+*.ntvs_analysis.dat
+*.nativecodeanalysis.*
+
+# Others
+*.DotSettings
+/packages/*    # NuGet packages are stored in /packages/
+
+# node_modules folder for React
+**/node_modules/
+
+# SQLite database files
+*.db
+*.sqlite
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
