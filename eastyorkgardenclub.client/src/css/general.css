@@ -1,0 +1,317 @@
+/* **************************************** */
+/*  Header */
+/* **************************************** */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Because we want head to be sticky later */
+    height: 9.6rem;
+    padding: 0 4.8rem;
+    position: relative;
+}
+
+.logo {
+    height: 9rem;
+}
+
+/* **************************************** */
+/*  navigation */
+/* **************************************** */
+/* .main-nav {
+  display: inline-block;
+  align-items: center;
+  height: 12rem;
+} */
+
+.main-nav-list {
+    list-style: none;
+    display: flex;
+    gap: 4.8rem;
+    align-items: center;
+}
+
+.main-nav-link {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: #333333;
+}
+
+    .main-nav-link.nav-cta:link,
+    .main-nav-link.nav-cta:visited {
+        padding: 1rem 2.8rem;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #8f4b88;
+    }
+
+/* **************************************** */
+/*  Hero Section */
+/* **************************************** */
+.section-hero {
+    padding: 0;
+    background-color: #568f4a;
+}
+
+.hero {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+.hero-img {
+    width: 100%;
+}
+
+.hero-text-box {
+    padding-left: 8rem;
+    padding-right: 8rem;
+}
+
+.hero-description {
+    width: 60rem;
+    font-size: 1.8rem;
+    color: #fff;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.Learn-more-link {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #65305e;
+}
+
+.hero-heading {
+    color: #fff;
+}
+/* **************************************** */
+/*  Meeting Section */
+/* **************************************** */
+.section-meetings {
+    padding: 9.6rem 0;
+}
+
+.meeting-card {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.meeting-img {
+    width: 100%;
+    height: 18rem;
+}
+
+.meeting-content {
+    background-color: #9abc92;
+    padding: 3.5rem 3rem;
+    height: 23.7rem;
+    position: relative;
+}
+
+.meeting-subtitle {
+    color: #fff;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1.6rem;
+}
+
+.meeting-title {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1.6rem;
+    line-height: 1.2;
+}
+
+.meeting-date {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 3.2rem;
+}
+
+.meeting-link {
+    font-size: 1.6rem;
+    color: #65305e;
+    text-decoration: none;
+    font-weight: 800;
+    position: absolute;
+    bottom: 3.5rem;
+}
+
+/* **************************************** */
+/*  Contacts Section */
+/* **************************************** */
+.section-contacts {
+    padding: 9.6rem 0;
+}
+
+.contact-info-box {
+    padding: 4.8rem 0 0 0;
+}
+
+.contact-subtitle {
+    font-size: 3rem;
+    color: #333333;
+    margin-bottom: 3.2rem;
+}
+
+.addres-wrap,
+.email-wrap {
+    display: flex;
+    gap: 1.6rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.addres-wrap {
+    align-items: top;
+}
+
+.email-wrap {
+    align-items: center;
+}
+
+    .addres-wrap p,
+    .email-wrap p {
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+
+.contact-icon {
+    height: 2.4rem;
+    width: 2.4rem;
+}
+
+.map {
+    margin-top: 3rem;
+}
+
+.send-message-box {
+    padding: 4.8rem 0 0;
+    position: relative;
+}
+
+.send-message-subtitle {
+    font-size: 3rem;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 4.8rem;
+}
+
+.name-label,
+.email-label,
+.message-label {
+    display: block;
+    font-size: 1.8rem;
+    color: #505050;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+
+.name-input,
+.email-input,
+.message-input {
+    width: 100%;
+    padding: 1.2rem;
+    color: inherit;
+    font-size: 1.8rem;
+    font-family: inherit;
+    background-color: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 7px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    margin-bottom: 3.2rem;
+}
+
+.message-input {
+    height: 27rem;
+}
+
+.submit-btn {
+    padding: 1rem 2.8rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #65305e;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.submit-btn-box {
+    display: flex;
+    justify-content: end;
+}
+
+/* **************************************** */
+/*  Footer */
+/* **************************************** */
+
+footer {
+    background-color: #f6f6f6;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.copyright {
+    font-size: 1.4rem;
+    color: #333333;
+}
+
+.social-nav {
+    display: flex;
+    align-items: center;
+}
+
+.face-book {
+    text-decoration: none;
+    color: #505050;
+}
+
+.face-book-icon {
+    height: 2.4rem;
+    width: 2.4rem;
+}
+
+.footer-nav-list {
+    list-style: none;
+    display: flex;
+    /* gap: 4.8rem; */
+    align-items: center;
+}
+
+.footer-nav-link {
+    display: inline-block;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #333333;
+}
+
+    .footer-nav-link::before {
+        content: "|";
+        margin: 0 2.4rem;
+    }
+
+/* .footer-nav-link.nav-cta:link,
+.footer-nav-link.nav-cta:visited {
+  padding: 1rem 2.8rem;
+  border-radius: 5px;
+  color: #333333;
+  background-color: #356bff;
+} */
