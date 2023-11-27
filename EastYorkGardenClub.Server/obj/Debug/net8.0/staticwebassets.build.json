@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "qgVWvoZ88k+sbXI+a1rHv7cEs+BO3Y94S5y166SblSs=",
+  "Source": "EastYorkGardenClub.Server",
+  "BasePath": "_content/EastYorkGardenClub.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Repos\\EastYorkGardenClub\\eastyorkgardenclub.client\\eastyorkgardenclub.client.esproj",
+      "Version": 2,
+      "Source": "eastyorkgardenclub.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,6 @@
+@EastYorkGardenClub.Server_HostAddress = http://localhost:5051
+
+GET {{EastYorkGardenClub.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
