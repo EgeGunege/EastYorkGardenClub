@@ -1,7 +1,6 @@
 /* **************************************** */
 /*  Header */
 /* **************************************** */
-
 header {
     display: flex;
     justify-content: space-between;
@@ -13,18 +12,12 @@ header {
 }
 
 .logo {
-    height: 9rem;
+    height: 9.6rem;
 }
 
 /* **************************************** */
 /*  navigation */
 /* **************************************** */
-/* .main-nav {
-  display: inline-block;
-  align-items: center;
-  height: 12rem;
-} */
-
 .main-nav-list {
     list-style: none;
     display: flex;
@@ -53,7 +46,6 @@ header {
 /* **************************************** */
 .section-hero {
     padding: 0;
-    background-color: #568f4a;
 }
 
 .hero {
@@ -62,10 +54,6 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-}
-
-.hero-img {
-    width: 100%;
 }
 
 .hero-text-box {
