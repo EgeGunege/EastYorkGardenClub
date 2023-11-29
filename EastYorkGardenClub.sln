@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EastYorkGardenClub.Server", "EastYorkGardenClub.Server\EastYorkGardenClub.Server.csproj", "{10F40C3E-16DD-4751-B941-9E764BD1DEEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EastYorkGardenClub.Server", "EastYorkGardenClub.Server\EastYorkGardenClub.Server.csproj", "{10F40C3E-16DD-4751-B941-9E764BD1DEEB}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "eastyorkgardenclub.client", "eastyorkgardenclub.client\eastyorkgardenclub.client.esproj", "{E92BE36C-2EAE-44C1-80EC-B92FFB2A4F0C}"
 EndProject

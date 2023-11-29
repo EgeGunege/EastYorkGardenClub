@@ -1,9 +1,10 @@
 /*import { Routes, Route } from 'react-router-dom';*/
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '/src/admin/css/AdminPage.css';
 import Logo from '/src/img/eastyorkgardenclublogo.gif';
 
-const AdminPage = () => {
+const AdminPage = ({adminName}) => {
 
     const navItems = [
         { path: '/admin/home', label: 'Home' },
@@ -19,7 +20,8 @@ const AdminPage = () => {
         <div className="admin-page-container">
             <aside className="sidebar">
                 <img src={Logo} alt="Logo" className="login-logo" />
-                <h1 className="sidebar-title">East York Garden Club Admin</h1>
+                <h1 className="sidebar-title">East York Garden Club Admin Page</h1>
+                <h4 className="sidebar-user">Welcome, {adminName}</h4>
                 <nav className="sidebar-nav">
                     <ul className="sidebar-menu">
                         {navItems.map(item => (
@@ -42,6 +44,10 @@ const AdminPage = () => {
             </main>
         </div>
     );
+};
+
+AdminPage.propTypes = {
+    adminName: PropTypes.func.isRequired,
 };
 
 export default AdminPage;

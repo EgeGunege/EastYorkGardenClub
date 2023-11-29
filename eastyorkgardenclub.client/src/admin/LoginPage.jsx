@@ -12,10 +12,16 @@ const LoginPage = ({ onLogin }) => {
 
     const handleLogin = async (event) => {
         event.preventDefault();
-        if (onLogin({ email, password })) {
-            navigate('/admin');
-        } else {
-            setError('Invalid email or password.');
+        try {
+            const result = await onLogin({ email, password });
+            if (result) {
+                navigate('/admin');
+            } else {
+                setError('Invalid email or password.');
+            }
+        } catch (err) {
+            setError('An error occurred while logging in.');
+            console.error(err);
         }
     };
 

@@ -2,8 +2,8 @@
 {
     public class Member
     {
-        public string LoginID { get; set; }
-
-        public string Password { get; set; }
+        public Guid ID { get; set; }
+        public string MemberName { get; set; }
+        public string MemberEmail { get; set; }
     }
 }
