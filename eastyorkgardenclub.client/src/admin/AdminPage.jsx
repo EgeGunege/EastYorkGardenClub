@@ -1,19 +1,31 @@
-/*import { Routes, Route } from 'react-router-dom';*/
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import '/src/admin/css/AdminPage.css';
 import Logo from '/src/img/eastyorkgardenclublogo.gif';
+import AdminMeetings from '/src/admin/AdminMeetings.jsx';
 
 const AdminPage = ({adminName}) => {
+    const [currentPage, setCurrentPage] = useState('home');
+
+    const renderPage = () => {
+        switch (currentPage) {
+            case 'home':
+                return null;
+            case 'meetings':
+                return <AdminMeetings />;
+            default:
+                return null;
+        }
+    };
 
     const navItems = [
-        { path: '/admin/home', label: 'Home' },
-        { path: '/admin/about', label: 'About' },
-        { path: '/admin/meetings', label: 'Meetings' },
-        { path: '/admin/news', label: 'News Letters' },
-        { path: '/admin/shows', label: 'Flower Shows' },
-        { path: '/admin/messages', label: 'Messages' },
-        { path: '/admin/send-email', label: 'Send Email' },
+        { to: 'home', label: 'Home' },
+        { to: 'about', label: 'About' },
+        { to: 'meetings', label: 'Meetings' },
+        { to: 'news', label: 'News Letters' },
+        { to: 'shows', label: 'Flower Shows' },
+        { to: 'messages', label: 'Messages' },
+        { to: 'send-email', label: 'Send Email' },
     ];
 
     return (
@@ -26,28 +38,21 @@ const AdminPage = ({adminName}) => {
                     <ul className="sidebar-menu">
                         {navItems.map(item => (
                             <li key={item.label}>
-                                <Link to={item.path}>{item.label}</Link>
+                                <a onClick={() => setCurrentPage(item.to)}>{item.label}</a>
                             </li>
                         ))}
                     </ul>
                 </nav>
             </aside>
             <main className="admin-main">
-                {/*<Routes>*/}
-                {/*    <Route path="/admin/home" element={<AdminHome />} />*/}
-                {/*    <Route path="/admin/about" element={<AdminAbout />} />*/}
-                {/*    <Route path="/admin/meetings" element={<AdminMeetings />} />*/}
-                {/*    <Route path="/admin/shows" element={<AdminShows />} />*/}
-                {/*    <Route path="/admin/messages" element={<AdminMessages />} />*/}
-                {/*    <Route path="/admin/send-email" element={<AdminSendEmail />} />*/}
-                {/*</Routes>*/}
+                {renderPage()}
             </main>
         </div>
     );
 };
 
 AdminPage.propTypes = {
-    adminName: PropTypes.func.isRequired,
+    adminName: PropTypes.string.isRequired,
 };
 
 export default AdminPage;
