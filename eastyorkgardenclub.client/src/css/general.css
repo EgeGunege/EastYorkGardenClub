@@ -16,7 +16,7 @@ header {
     justify-content: space-between;
     align-items: center;
     /* Because we want head to be sticky later */
-    height: 9.6rem;
+    height: 20%;
     padding: 0 4.8rem;
     position: relative;
 }
@@ -288,7 +288,7 @@ header {
 
 footer {
     background-color: #f6f6f6;
-    padding: 3rem;
+    padding: 10%;
     display: flex;
     justify-content: space-between;
 }
