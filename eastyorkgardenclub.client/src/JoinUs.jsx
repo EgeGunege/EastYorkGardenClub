@@ -107,7 +107,7 @@ const JoinUs = () => {
 
     return (
         <>
-            <form className="admin-form-container" onSubmit={handleFormSubmit}>
+            <form className="member-form-container" onSubmit={handleFormSubmit}>
                 <img src={Logo} alt="East York Garden Club Logo" className="login-logo" />
                 <h2>MEMBERSHIP FORM</h2>
                 <h4>Personal Information</h4>
@@ -282,7 +282,7 @@ const JoinUs = () => {
                     <span style={{
                         fontStyle: 'italic', fontSize: 'small', marginLeft: '5px'
                     }}>
-                        Note: It is voluntary if you choose to any age option.  The rental rate at Stan Wadlow Clubhouse is lower for organizations with a high number of seniors (over 60) and youth (under 18).  It is helpful, but not necessary, for us to have this information.
+                        Note: Choosing any age option is voluntary. The rental rate at Stan Wadlow Clubhouse is lower for organizations with a high number of seniors (over 60) and youth (under 18). It is helpful, but not necessary, for us to have this information.
                     </span>
                 </div>
                 <div className="field-side-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -299,7 +299,7 @@ const JoinUs = () => {
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <label>I would like to volunteer in some capacity with the Club</label>
-                        <label htmlFor="volunteerYes" style={{ marginRight: '10px' }}>
+                        <label htmlFor="volunteerYes" style={{ marginLeft:'3px', marginRight: '10px' }}>
                             <input type="radio" id="volunteerYes" name="volunteer" value="yes" />
                             Yes
                         </label>
