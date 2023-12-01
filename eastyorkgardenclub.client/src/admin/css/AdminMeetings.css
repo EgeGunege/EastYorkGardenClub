@@ -1,0 +1,154 @@
+.admin-form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+    .admin-form-container table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .admin-form-container .table-container {
+        overflow-x: auto;
+    }
+
+    .admin-form-container td,
+    .admin-form-container th {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        min-width: 100px;
+        max-width: 200px;
+    }
+    .admin-form-container td {
+        padding: 10px;
+        text-align: left;
+    }
+        .admin-form-container td:last-child {
+            width: 100px;
+            white-space: nowrap;
+            text-align: right;
+        }
+    .admin-form-container input[type="text"],
+    .admin-form-container input[type="date"],
+    .admin-form-container input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .admin-form-container input[type="submit"],
+    .admin-form-container button {
+        background-color: #5c4b8b;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+    }
+        .admin-form-container input[type="submit"]:hover,
+        .admin-form-container button:hover {
+            background-color: #473d69;
+        }
+
+    .admin-form-container label {
+        display: block;
+        margin-top: 10px;
+        color: #333;
+        font-size: 1rem;
+    }
+
+.custom-file-input {
+    background-color: #5c4b8b;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .custom-file-input::before {
+        content: 'Choose File';
+        display: inline-block;
+        background: #5c4b8b;
+        border: 1px solid #999;
+        border-radius: 3px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-align: center;
+        font-weight: 500;
+        color: white;
+    }
+
+    .custom-file-input:hover::before {
+        border-color: black;
+    }
+
+    .custom-file-input::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+
+    .custom-file-input::file-selector-button {
+        display: none;
+    }
+
+    .custom-file-input::-ms-browse {
+        display: none;
+    }
+
+.admin-form-container .field-group {
+    margin-bottom: 15px;
+}
+
+    .admin-form-container .field-group label {
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+
+.admin-form-container input[type="submit"],
+.admin-form-container input[type="button"] {
+    background-color: #5c4b8b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+    .admin-form-container input[type="submit"]:hover,
+    .admin-form-container input[type="button"]:hover {
+        background-color: #473d69;
+    }
+
+.drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    margin: 10px 0;
+    color: #999;
+    transition: border-color 0.3s;
+}
+
+    .drop-zone:hover,
+    .drop-zone.drag-over {
+        border-color: #5c4b8b;
+    }
+
+.custom-file-upload {
+    display: block;
+    padding: 10px;
+    margin-bottom: 5px;
+    color: #5c4b8b;
+    cursor: pointer;
+}
