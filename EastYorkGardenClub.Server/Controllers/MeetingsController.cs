@@ -42,6 +42,21 @@ namespace EastYorkGardenClub.Server.Controllers
 
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMeeting(Guid id)
+        {
+            var meeting = await _context.Meetings.FindAsync(id);
+            if (meeting == null)
+            {
+                return NotFound();
+            }
+
+            _context.Meetings.Remove(meeting);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostMeeting([FromForm] MeetingViewModel model)
         {

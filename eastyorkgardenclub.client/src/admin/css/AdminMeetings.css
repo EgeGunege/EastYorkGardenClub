@@ -6,7 +6,31 @@
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+    .admin-form-container table {
+        width: 100%;
+        table-layout: fixed;
+    }
 
+    .admin-form-container .table-container {
+        overflow-x: auto;
+    }
+
+    .admin-form-container td,
+    .admin-form-container th {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        min-width: 100px;
+        max-width: 200px;
+    }
+    .admin-form-container td {
+        padding: 10px;
+        text-align: left;
+    }
+        .admin-form-container td:last-child {
+            width: 100px;
+            white-space: nowrap;
+            text-align: right;
+        }
     .admin-form-container input[type="text"],
     .admin-form-container input[type="date"],
     .admin-form-container input[type="file"] {
@@ -25,9 +49,9 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin-right: 10px;
+        margin-left: auto;
+        margin-right: auto;
     }
-
         .admin-form-container input[type="submit"]:hover,
         .admin-form-container button:hover {
             background-color: #473d69;
@@ -108,7 +132,7 @@
 .drop-zone {
     border: 2px dashed #ccc;
     border-radius: 5px;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     cursor: pointer;
     margin: 10px 0;

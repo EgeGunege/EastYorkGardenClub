@@ -18,6 +18,11 @@ const AdminPage = ({adminName}) => {
         }
     };
 
+    const handleLogout = () => {
+        localStorage.clear();
+        window.location.reload();
+    };
+
     const navItems = [
         { to: 'home', label: 'Home' },
         { to: 'about', label: 'About' },
@@ -38,9 +43,12 @@ const AdminPage = ({adminName}) => {
                     <ul className="sidebar-menu">
                         {navItems.map(item => (
                             <li key={item.label}>
-                                <a onClick={() => setCurrentPage(item.to)}>{item.label}</a>
+                                <a id={item.to+'Link'} onClick={() => setCurrentPage(item.to)}>{item.label}</a>
                             </li>
                         ))}
+                        <li>
+                            <a id="logout-button" onClick={handleLogout}>Logout</a>
+                        </li>
                     </ul>
                 </nav>
             </aside>

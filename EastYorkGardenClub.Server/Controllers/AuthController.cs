@@ -56,7 +56,7 @@ namespace EastYorkGardenClub.Server.Controllers
                 {
                     new Claim("name", username)
                 }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddMinutes(10),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
