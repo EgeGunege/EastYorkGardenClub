@@ -4,6 +4,7 @@ using EastYorkGardenClub.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EastYorkGardenClub.Server.Migrations
 {
     [DbContext(typeof(EYGCDbContext))]
-    partial class EYGCDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231130052003_UpdateMeetingSchema")]
+    partial class UpdateMeetingSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,10 +66,6 @@ namespace EastYorkGardenClub.Server.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("ReadMoreLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Speaker")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

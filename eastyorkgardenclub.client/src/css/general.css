@@ -145,9 +145,16 @@ header {
     line-height: 1.2;
 }
 
-.meeting-date {
+.meeting-speaker {
     color: #fff;
     font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 3.2rem;
+}
+
+.meeting-date {
+    color: #fff;
+    font-size: 1.2rem;
     font-weight: 400;
     margin-bottom: 3.2rem;
 }
@@ -159,6 +166,15 @@ header {
     font-weight: 800;
     position: absolute;
     bottom: 3.5rem;
+}
+
+.meeting-slide {
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.slick-slide {
+    margin: 0;
 }
 
 /* **************************************** */

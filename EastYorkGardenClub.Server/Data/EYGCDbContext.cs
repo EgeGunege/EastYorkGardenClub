@@ -11,5 +11,6 @@ namespace EastYorkGardenClub.Server.Data
         }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<Meeting> Meetings { get; set; }
     }
 }

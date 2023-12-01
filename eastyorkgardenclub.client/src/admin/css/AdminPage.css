@@ -7,7 +7,7 @@
     width: 250px;
     background-color: #8f4b88;
     color: white;
-    padding: 20px;
+    padding: 40px;
 }
 
 .sidebar-title {
@@ -43,6 +43,7 @@
 
         .sidebar-menu li a:hover {
             opacity:0.30;
+            cursor:pointer;
         }
 
 .admin-main {
@@ -52,3 +53,7 @@
     background-color: #f8f9fa; 
 }
 
+#logout-button {
+  position: absolute;
+  bottom: 10px;
+}
