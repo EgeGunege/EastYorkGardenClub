@@ -1,0 +1,38 @@
+.section-meetings {
+  padding: 9.6rem 0;
+}
+
+.breadcrumb {
+  padding: 1rem 5rem;
+}
+
+.heading-meetings {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #333333;
+  width: 60rem;
+  line-height: 1.4;
+  margin-bottom: 4.8rem;
+}
+
+.breadcrumb {
+  background-color: #f6f6f6;
+  padding: 1rem 2rem;
+  display: inline-block;
+}
+
+.breadcrumb ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb ul li {
+  font-size: 1.3rem;
+  color: #454545;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: "&gt;";
+}

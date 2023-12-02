@@ -1,342 +1,128 @@
-/* **************************************** */
-/*  Header */
-/* **************************************** */
+/* 
+
+----01 Typoreaphy system
+
+-FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+-Font weight:
+default: 400
+medium: 500
+semi-bold: 600
+bold: 700
+
+-Line height:
+default: 1
+small: 1.05
+medium: 1.2
+paragraph default: 1.6
+large: 1.8
+
+- Letter spacing
+-0.5px
+0.75px
+
+
+-----02 Colors
+  색상 정할 떄: tint and shade generator 사이트 이용 
+-Primary:
+#fff
+#65305E
+#8F4B88
+#D785C8
+#568F4A
+#9abc92
+#d1c1cf
+#e0d6df
+#f0eaef
+
+-Tints:
+
+-Shade:
+
+
+-Accents:
+-Greys:
+#f6f6f6
+#505050
+#333333
+
+------03 Shadows
+0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+------04 border_radius
+
+Default:9px
+Medium: 11px;
+
+------05 white space
+
+-SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 10px;
+      10px / 16px = 0.625 =62.5%
+      Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+  overflow-x: hidden;
+  /* scroll-behavior: smooth; */
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400; /* Default weight, can be changed as needed */
-}
-
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Because we want head to be sticky later */
-    height: 20%;
-    padding: 0 4.8rem;
-    position: relative;
-}
-
-.logo {
-    height: 9rem;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #454545;
+  /* Only works if there is nothing absolutely positiond in relation to body */
+  overflow-x: hidden;
 }
 
 /* **************************************** */
-/*  navigation */
+/*  Generl Reuseable Components */
 /* **************************************** */
-/* .main-nav {
-  display: inline-block;
-  align-items: center;
-  height: 12rem;
-} */
-
-.main-nav-list {
-    list-style: none;
-    display: flex;
-    gap: 4.8rem;
-    align-items: center;
+.container {
+  /* 보통 1140px이나 1200px을 width로 설정. jonas는 1200px 선호 */
+  max-width: 130rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
 }
 
-.main-nav-link {
-    display: inline-block;
-    font-size: 1.6rem;
-    font-weight: 400;
-    text-decoration: none;
-    color: #333333;
-}
-
-    .main-nav-link.nav-cta:link,
-    .main-nav-link.nav-cta:visited {
-        padding: 1rem 2.8rem;
-        border-radius: 5px;
-        color: #fff;
-        background-color: #8f4b88;
-    }
-
-/* **************************************** */
-/*  Hero Section */
-/* **************************************** */
-.section-hero {
-    padding: 0;
-    background-color: #568f4a;
-}
-
-.hero {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-}
-
-.hero-img {
-    width: 100%;
-}
-
-.hero-text-box {
-    padding-left: 8rem;
-    padding-right: 8rem;
-}
-
-.hero-description {
-    width: 60rem;
-    font-size: 1.8rem;
-    color: #fff;
-    line-height: 1.6;
-    font-weight: 400;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-}
-
-.Learn-more-link {
-    display: inline-block;
-    font-size: 1.8rem;
-    font-weight: 700;
-    text-decoration: none;
-    color: #65305e;
-}
-
-.hero-heading {
-    color: #fff;
-}
-/* **************************************** */
-/*  Meeting Section */
-/* **************************************** */
-.section-meetings {
-    padding: 9.6rem 0;
-}
-
-.meeting-card {
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.meeting-img {
-    width: 100%;
-    height: 18rem;
-}
-
-.meeting-content {
-    background-color: #9abc92;
-    padding: 3.5rem 3rem;
-    height: 23.7rem;
-    position: relative;
-}
-
-.meeting-subtitle {
-    color: #fff;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 1.6rem;
-}
-
-.meeting-title {
-    color: #fff;
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 1.6rem;
-    line-height: 1.2;
-}
-
-.meeting-speaker {
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-bottom: 3.2rem;
-}
-
-.meeting-date {
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-bottom: 3.2rem;
-}
-
-.meeting-link {
-    font-size: 1.6rem;
-    color: #65305e;
-    text-decoration: none;
-    font-weight: 800;
-    position: absolute;
-    bottom: 3.5rem;
-}
-
-.meeting-slide {
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-.slick-slide {
-    margin: 0;
-}
-
-/* **************************************** */
-/*  Contacts Section */
-/* **************************************** */
-.section-contacts {
-    padding: 9.6rem 0;
-}
-
-.contact-info-box {
-    padding: 4.8rem 0 0 0;
-}
-
-.contact-subtitle {
-    font-size: 3rem;
-    color: #333333;
-    margin-bottom: 3.2rem;
-}
-
-.addres-wrap,
-.email-wrap {
-    display: flex;
-    gap: 1.6rem;
-    margin-bottom: 1.2rem;
-    line-height: 1.6;
-}
-
-.addres-wrap {
-    align-items: top;
-}
-
-.email-wrap {
-    align-items: center;
-}
-
-    .addres-wrap p,
-    .email-wrap p {
-        font-size: 1.8rem;
-        font-weight: 500;
-    }
-
-.contact-icon {
-    height: 2.4rem;
-    width: 2.4rem;
-}
-
-.map {
-    margin-top: 3rem;
-}
-
-.send-message-box {
-    padding: 4.8rem 0 0;
-    position: relative;
-}
-
-.send-message-subtitle {
-    font-size: 3rem;
-    color: #333333;
-    margin-top: 0;
-    margin-bottom: 4.8rem;
-}
-
-.name-label,
-.email-label,
-.message-label {
-    display: block;
-    font-size: 1.8rem;
-    color: #505050;
-    font-weight: 500;
-    margin-bottom: 0.8rem;
-}
-
-.name-input,
-.email-input,
-.message-input {
-    width: 100%;
-    padding: 1.2rem;
-    color: inherit;
-    font-size: 1.8rem;
-    font-family: inherit;
-    background-color: white;
-    border: 1px solid #e1e1e1;
-    border-radius: 7px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    margin-bottom: 3.2rem;
-}
-
-.message-input {
-    height: 27rem;
-}
-
-.submit-btn {
-    padding: 1rem 2.8rem;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #65305e;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
-.submit-btn-box {
-    display: flex;
-    justify-content: end;
-}
-
-/* **************************************** */
-/*  Footer */
-/* **************************************** */
-
-footer {
-    background-color: #f6f6f6;
-    padding: 10%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.copyright {
-    font-size: 1.4rem;
-    color: #333333;
-}
-
-.social-nav {
-    display: flex;
-    align-items: center;
-}
-
-.face-book {
-    text-decoration: none;
-    color: #505050;
-}
-
-.face-book-icon {
-    height: 2.4rem;
-    width: 2.4rem;
-}
-
-.footer-nav-list {
-    list-style: none;
-    display: flex;
-    /* gap: 4.8rem; */
-    align-items: center;
-}
-
-.footer-nav-link {
-    display: inline-block;
-    font-weight: 400;
-    text-decoration: none;
-    font-size: 1.4rem;
-    color: #333333;
-}
-
-    .footer-nav-link::before {
-        content: "|";
-        margin: 0 2.4rem;
-    }
-
-/* .footer-nav-link.nav-cta:link,
-.footer-nav-link.nav-cta:visited {
-  padding: 1rem 2.8rem;
-  border-radius: 5px;
+.heading-primary {
+  font-size: 6rem;
+  font-weight: 700;
   color: #333333;
-  background-color: #356bff;
-} */
+  width: 60rem;
+  line-height: 1.4;
+}
+
+.heading-description {
+  width: 80rem;
+  font-size: 1.8rem;
+  color: #808080;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-top: 1.6rem;
+  margin-bottom: 4.8rem;
+}
+
+.grid {
+  display: grid;
+}
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 3.2rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 8rem;
+}

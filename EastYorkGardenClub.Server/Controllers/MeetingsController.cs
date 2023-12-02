@@ -25,7 +25,7 @@ namespace EastYorkGardenClub.Server.Controllers
         {
             var meetings = await _context.Meetings
                                 .OrderByDescending(m => m.Date)
-                                .Take(6)
+                                .Take(8)
                                 .Select(m => new MeetingDTO
                                 {
                                     ID = m.ID,
