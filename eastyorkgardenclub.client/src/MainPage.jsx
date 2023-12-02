@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '/src/img/eastyorkgardenclublogo.gif';
 import Sections from './mainPage/Sections'
 import JoinUs from './JoinUs';
+import Meetings from './Meetings';
 import './css/general.css';
 import './css/mainPage/index.css';
 
@@ -15,7 +16,7 @@ const MainPage = () => {
             case 'about':
                 return null;
             case 'meetings':
-                return null;
+                return <Meetings/>;
             case 'news':
                 return null;
             case 'shows':
