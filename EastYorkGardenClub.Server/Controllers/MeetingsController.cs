@@ -25,14 +25,13 @@ namespace EastYorkGardenClub.Server.Controllers
         {
             var meetings = await _context.Meetings
                                 .OrderByDescending(m => m.Date)
-                                .Take(8)
                                 .Select(m => new MeetingDTO
                                 {
                                     ID = m.ID,
                                     Title = m.Title,
                                     Date = m.Date,
                                     Speaker = m.Speaker,
-                                    ReadMoreLink = m.ReadMoreLink,
+                                    Details = m.Details,
                                     ImageData = m.ImageData != null ? Convert.ToBase64String(m.ImageData) : null,
                                     ImageContentType = m.ImageContentType
                                 })
@@ -70,7 +69,7 @@ namespace EastYorkGardenClub.Server.Controllers
                 ID = Guid.NewGuid(),
                 Title = model.Title,
                 Date = model.Date,
-                ReadMoreLink = model.ReadMoreLink,
+                Details = model.Details,
                 Speaker = model.Speaker,
             };
 
@@ -95,7 +94,7 @@ namespace EastYorkGardenClub.Server.Controllers
             public string Title { get; set; }
             public DateTime Date { get; set; }
             public IFormFile Image { get; set; }
-            public string ReadMoreLink { get; set; }
+            public string Details { get; set; }
             public string Speaker { get; set; }
         }
     }

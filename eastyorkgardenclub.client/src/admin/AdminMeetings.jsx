@@ -5,7 +5,7 @@ const AdminMeetings = () => {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [image, setImage] = useState(null);
-    const [readMoreLink, setReadMoreLink] = useState('');
+    const [details, setDetails] = useState('');
     const [speaker, setSpeaker] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [meetings, setMeetings] = useState([]);
@@ -80,7 +80,7 @@ const AdminMeetings = () => {
         formData.append('title', title);
         formData.append('date', date);
         formData.append('image', image);
-        formData.append('readMoreLink', readMoreLink);
+        formData.append('readMoreLink', details);
         formData.append('speaker', speaker);
 
         const response = await fetch('https://localhost:44345/api/meetings', {
@@ -92,7 +92,7 @@ const AdminMeetings = () => {
             setTitle('');
             setDate('');
             setImage(null);
-            setReadMoreLink('');
+            setDetails('');
             setSpeaker('');
             setErrorMessage('');
             document.querySelector('#meetingsLink').click()
@@ -153,12 +153,11 @@ const AdminMeetings = () => {
                 />
             </div>
             <div className="field-group">
-                <input
-                    className="form-control"
-                    type="text"
-                    placeholder="Read More Link"
-                    value={readMoreLink}
-                    onChange={(e) => setReadMoreLink(e.target.value)}
+                <textarea
+                    className="textArea"
+                    placeholder="Details"
+                    value={details}
+                    onChange={(e) => setDetails(e.target.value)}
                 />
             </div>
             {errorMessage && <div className="error-message">{errorMessage}</div>}
