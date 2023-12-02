@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 function SectionMeetings() {
     const [meetings, setMeetings] = useState([]);
@@ -24,41 +21,6 @@ function SectionMeetings() {
         fetchMeetings();
     }, []);
 
-    const settings = {
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 3,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-
     return (
         <section className="section-meetings">
             <div className="container">
@@ -67,8 +29,8 @@ function SectionMeetings() {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
                     quisquam aliquam, dolorem voluptates obcaecati pariatur.
                 </p>
-                <Slider {...settings}>
-                    {meetings.map((meeting) => (
+                <div className="grid grid--4-cols">
+                    {meetings.slice(0, 4).map((meeting) => (
                         <div key={meeting.id} className="meeting-slide">
                             <div className="meeting-card">
                                 <img className="meeting-img"
@@ -77,7 +39,6 @@ function SectionMeetings() {
                                 <div className="meeting-content">
                                     <p className="meeting-subtitle">Topic</p>
                                     <p className="meeting-title">{meeting.title}</p>
-                                    <p className="meeting-speaker">{meeting.speaker}</p>
                                     <p className="meeting-date">
                                         {new Date(meeting.date).toLocaleDateString('en-US', {
                                             year: 'numeric',
@@ -90,7 +51,7 @@ function SectionMeetings() {
                             </div>
                         </div>
                     ))}
-                </Slider>
+                </div>
             </div>
         </section>
     );
