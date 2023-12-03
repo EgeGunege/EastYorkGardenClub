@@ -7,6 +7,7 @@ import Meetings from "./Meetings";
 import NewsLetters from "./NewsLetters";
 import "./css/general.css";
 import "./css/mainPage/index.css";
+import MyIcons from "./icons/MyIcons";
 
 const MainPage = () => {
   const [currentPage, setCurrentPage] = useState("home");
@@ -90,12 +91,11 @@ const MainPage = () => {
             to="https://www.facebook.com/groups/EastYorkGC"
             target="_blank"
           >
-            <ion-icon
-              className="face-book-icon"
-              name="logo-facebook"
-            ></ion-icon>
+              <MyIcons
+                className="face-book-icon"
+                iconName="facebook">
+              </MyIcons>
           </Link>
-
           <nav className="footer-nav">
             <ul className="footer-nav-list">
               {links.map((headerItem) => (
