@@ -39,7 +39,7 @@ const Meetings = () => {
           </ul>
         </nav>
         <h1 className="heading-meetings">Meetings</h1>
-        <p class="heading-description">
+              <p className="heading-description">
           Our meetings will be hybrids: in-person at Stan Wadlow, and virtual,
           via Zoom. <br></br>Members will be informed of the logon information.
         </p>

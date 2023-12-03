@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import '/src/admin/css/AdminPage.css';
 import Logo from '/src/img/eastyorkgardenclublogo.gif';
 import AdminMeetings from '/src/admin/AdminMeetings.jsx';
+import AdminNews from '/src/admin/AdminNews.jsx';
 
 const AdminPage = ({adminName}) => {
     const [currentPage, setCurrentPage] = useState('home');
@@ -13,6 +14,8 @@ const AdminPage = ({adminName}) => {
                 return null;
             case 'meetings':
                 return <AdminMeetings />;
+            case 'news':
+                return <AdminNews />;
             default:
                 return null;
         }

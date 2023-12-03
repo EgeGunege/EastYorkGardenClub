@@ -9,6 +9,7 @@ import NewsLetters from "./NewsLetters";
 import About from "./About";
 import "./css/general.css";
 import "./css/mainPage/index.css";
+import { LogoFacebook } from 'react-ionicons'
 import { useEffect } from "react";
 import MeetingsDetail from "./MeetingsDetail";
 
@@ -94,12 +95,13 @@ const MainPage = ({ sectionName = null }) => {
             to="https://www.facebook.com/groups/EastYorkGC"
             target="_blank"
           >
-            <ion-icon
-              className="face-book-icon"
-              name="logo-facebook"
-            ></ion-icon>
+            <LogoFacebook
+                color={'#505050'}
+                title={''}
+                height="2.4rem"
+                width="2.4rem"
+            />
           </Link>
-
           <nav className="footer-nav">
             <ul className="footer-nav-list">
               {links.map((headerItem) => (
