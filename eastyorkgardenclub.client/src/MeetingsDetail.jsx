@@ -1,3 +1,4 @@
+import { CalendarOutline, TimeOutline, MicOutline, LocationOutline } from 'react-ionicons'
 import "./css/MeetingsDetail.css";
 
 const MeetingsDetail = () => {
@@ -27,28 +28,48 @@ const MeetingsDetail = () => {
 
         <div className="meeting-detail-box">
           <div className="meeting-detail">
-            <ion-icon className="calendar-outline"></ion-icon>
+            <CalendarOutline
+                color={'#00000'}
+                title={''}
+                height="2.4rem"
+                width="2.4rem"
+            />
             <div>
               <span className="meeting-detail-title">Date</span>
               <p>October 18, 2023</p>
             </div>
           </div>
           <div className="meeting-detail">
-            <ion-icon className="time-outline"></ion-icon>
+            <TimeOutline
+                color={'#00000'}
+                title={''}
+                height="2.4rem"
+                width="2.4rem"
+            />
             <div>
               <span className="meeting-detail-title">Time</span>
               <p>07:30PM - 09:00PM</p>
             </div>
           </div>
           <div className="meeting-detail">
-            <ion-icon className="mic-outline"></ion-icon>
+            <MicOutline
+                color={'#00000'}
+                title={''}
+                height="2.4rem"
+                width="2.4rem"
+            />
             <div>
               <span className="meeting-detail-title">Speaker</span>
               <p>Javad Mozafari</p>
             </div>
           </div>
           <div className="meeting-detail">
-            <ion-icon className="location-outline"></ion-icon>
+            <LocationOutline
+                color={'#454545'}
+                title={''}
+                height="2.4rem"
+                width="2.4rem"
+            />
             <div>
               <span className="meeting-detail-title">Location</span>
               <p>Stan Wadlow Clubhouse, 373 Cedarvale</p>
