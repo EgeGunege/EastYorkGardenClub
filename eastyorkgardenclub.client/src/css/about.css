@@ -1,0 +1,52 @@
+.section-about {
+  padding: 6.4rem 0 12.8rem 0;
+}
+.heading-about {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #333333;
+  width: 60rem;
+  line-height: 1.4;
+  margin-bottom: 4.8rem;
+}
+
+.about-text-box {
+  position: relative;
+}
+
+.about-description {
+  font-size: 1.8rem;
+  color: #808080;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-top: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.about-description :not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+.about-img {
+  width: 100%;
+}
+
+.joinus-btn-about:link,
+.joinus-btn-about:visited {
+  padding: 1.2rem 3.5rem;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #568f4a;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 0;
+}
+
+.joinus-btn-about:hover,
+.joinus-btn-about:active {
+  background-color: #78a56e;
+  /* background-color: #45723b; */
+}

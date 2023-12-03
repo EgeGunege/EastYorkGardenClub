@@ -1,0 +1,49 @@
+.section-meeting-details {
+  padding: 6.4rem 0 12.8rem 0;
+}
+
+.heading-meeting-details {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #333333;
+  width: 60rem;
+  line-height: 1.4;
+  margin-bottom: 4.8rem;
+}
+
+.calendar-outline,
+.time-outline,
+.mic-outline,
+.location-outline {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.meeting-detail-box {
+  display: flex;
+  justify-content: start;
+  gap: 6.4rem;
+  align-items: start;
+}
+.meeting-detail {
+  font-size: 1.8rem;
+  color: #808080;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-top: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.meeting-detail-title {
+  font-weight: 600;
+}
+
+.meeting-description {
+  width: 80rem;
+  font-size: 1.8rem;
+  color: #808080;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-top: 1.6rem;
+  margin-bottom: 4.8rem;
+}
