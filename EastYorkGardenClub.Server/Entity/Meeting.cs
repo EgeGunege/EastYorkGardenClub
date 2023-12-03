@@ -8,7 +8,7 @@
         public DateTime Date { get; set; }
         public byte[] ImageData { get; set; }
         public string ImageContentType { get; set; }
-        public string ReadMoreLink { get; set; }
+        public string Details { get; set; }
     }
 
 }

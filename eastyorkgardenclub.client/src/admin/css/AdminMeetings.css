@@ -129,6 +129,36 @@
         background-color: #473d69;
     }
 
+.admin-form-container .textArea {
+    width: 100%;
+    height: 15rem;
+    padding: 10px;
+    margin: 1rem 0;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    color: #333;
+    overflow-y: auto;
+    resize: vertical;
+    box-sizing: border-box;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+    font-family: "Arial", sans-serif;
+}
+
+    .admin-form-container .textArea:focus {
+        outline: none;
+        border-color: #5c4b8b;
+        box-shadow: 0 0 0 2px rgba(92, 75, 139, 0.5);
+    }
+
+    .admin-form-container .textArea::placeholder {
+        font-family: "Arial", sans-serif;
+        font-size:inherit;
+    }
+
 .drop-zone {
     border: 2px dashed #ccc;
     border-radius: 5px;
