@@ -4,7 +4,8 @@
     {
         public Guid ID { get; set; }
         public string Name { get; set; }
-        public string FilePath { get; set; }
+        public byte[] FileData { get; set; }
+        public string FileContentType { get; set; }
         public string UploadDate { get; set; }
     }
 }

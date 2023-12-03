@@ -7,7 +7,7 @@ import Meetings from "./Meetings";
 import NewsLetters from "./NewsLetters";
 import "./css/general.css";
 import "./css/mainPage/index.css";
-import MyIcons from "./icons/MyIcons";
+import { LogoFacebook } from 'react-ionicons'
 
 const MainPage = () => {
   const [currentPage, setCurrentPage] = useState("home");
@@ -91,10 +91,12 @@ const MainPage = () => {
             to="https://www.facebook.com/groups/EastYorkGC"
             target="_blank"
           >
-              <MyIcons
-                className="face-book-icon"
-                iconName="facebook">
-              </MyIcons>
+            <LogoFacebook
+                color={'#505050'}
+                title={''}
+                height="2.4rem"
+                width="2.4rem"
+            />
           </Link>
           <nav className="footer-nav">
             <ul className="footer-nav-list">

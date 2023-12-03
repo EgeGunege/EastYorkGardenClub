@@ -21,20 +21,34 @@ namespace EastYorkGardenClub.Server.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<NewsLetter>>> GetNewsletter()
+        public async Task<ActionResult<IEnumerable<NewsLetter>>> GetNewsletterList()
         {
-            var news = await _context.NewsLetters
+            var newsletters = await _context.NewsLetters
                                 .OrderByDescending(n => n.UploadDate)
                                 .Select(n => new NewsLettersDTO
                                 {
                                     ID = n.ID,
-                                    Name = n.Name,
-                                    FilePath = n.FilePath,
+                                    Name = n.Name
                                 })
                                 .ToListAsync();
 
-            return Ok(news);
+            return Ok(newsletters);
+        }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPdf(Guid id)
+        {
+            var newsletter = await _context.NewsLetters
+                                           .FirstOrDefaultAsync(n => n.ID == id);
+
+            if (newsletter == null || newsletter.FileData == null)
+            {
+                return NotFound();
+            }
+
+            var stream = new MemoryStream(newsletter.FileData);
+
+            return File(stream, newsletter.FileContentType, newsletter.Name);
         }
 
         [HttpDelete("{id}")]
@@ -64,28 +78,17 @@ namespace EastYorkGardenClub.Server.Controllers
             {
                 ID = Guid.NewGuid(),
                 Name = model.Name,
-                FilePath = string.Empty,
                 UploadDate = DateTime.UtcNow
             };
 
             if (model.File != null)
             {
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), "pdf");
-
-                if (!Directory.Exists(pathToSave))
+                using (var memoryStream = new MemoryStream())
                 {
-                    Directory.CreateDirectory(pathToSave);
+                    await model.File.CopyToAsync(memoryStream);
+                    newsletter.FileData = memoryStream.ToArray();
+                    newsletter.FileContentType = model.File.ContentType;
                 }
-
-                var fileName = model.File.FileName;
-                var fullPath = Path.Combine(pathToSave, fileName);
-
-                using (var stream = new FileStream(fullPath, FileMode.Create))
-                {
-                    await model.File.CopyToAsync(stream);
-                }
-
-                newsletter.FilePath = Path.Combine("pdf", fileName);
             }
 
             _context.NewsLetters.Add(newsletter);

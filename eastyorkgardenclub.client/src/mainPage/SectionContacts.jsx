@@ -1,5 +1,6 @@
 import '/src/css/general.css';
 import '/src/css/mainPage/index.css';
+import { MailOutline, LocationOutline } from 'react-ionicons';
 
 function SectionContacts() {
     const content =
@@ -11,14 +12,23 @@ function SectionContacts() {
                 <div className="contact-info-box">
                     <h2 className="contact-subtitle">Contact info</h2>
                     <div className="addres-wrap">
-                        <ion-icon className="contact-icon" name="location-outline"></ion-icon>
+                        <LocationOutline
+                            color={'#454545'}
+                            title={'' }
+                            height="2.4rem"
+                            width="2.4rem"
+                        />
                         <div>
                             <p>Stan Wadlow Clubhouse, 373 Cedarvale Ave,</p>
                             <p>East York, ON M4C 4K7</p>
                         </div>
                     </div>
                     <div className="email-wrap">
-                        <ion-icon className="contact-icon" name="mail-outline"></ion-icon>
+                        <MailOutline className="contact-icon"
+                            color={'#454545'}
+                            title={''}
+                            height="2.4rem"
+                            width="2.4rem"></MailOutline>
                         <p>gardenclub@eygc.ca</p>
                     </div>
                     <iframe className="map"
