@@ -29,8 +29,10 @@ large: 1.8
 #fff
 #65305E
 #8F4B88
+#a56fa0
 #D785C8
 #568F4A
+#78a56e
 #9abc92
 #d1c1cf
 #e0d6df
@@ -44,6 +46,7 @@ large: 1.8
 -Accents:
 -Greys:
 #f6f6f6
+#505050
 #505050
 #333333
 
@@ -96,6 +99,39 @@ body {
   margin: 0 auto;
 }
 
+.breadcrumb {
+  background-color: #f6f6f6;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  display: inline-block;
+
+  margin-bottom: 3.2rem;
+}
+
+.breadcrumb ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+.breadcrumb ul li {
+  margin: 0;
+}
+
+.breadcrumb-link {
+  font-size: 1.3rem;
+  color: #454545;
+  text-decoration: none;
+}
+
+.breadcrumb li:not(:first-child)::before {
+  content: "〉";
+  font-size: 1.2rem;
+  display: inline-block;
+  margin: 0 0.5rem 0 1rem;
+}
+
 .heading-primary {
   font-size: 6rem;
   font-weight: 700;
@@ -126,4 +162,27 @@ body {
 .grid--2-cols {
   grid-template-columns: repeat(2, 1fr);
   column-gap: 8rem;
+}
+
+.pagination {
+  margin-top: 8rem;
+}
+
+.page-item {
+  list-style: none;
+}
+
+.page-link:link,
+.page-link:visited {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #454545;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.page-link:hover,
+.page-link:active {
+  color: #d785c8;
 }
