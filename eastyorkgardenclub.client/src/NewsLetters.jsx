@@ -1,161 +1,104 @@
+import { useEffect, useState } from 'react'
 import "./css/NewsLetters.css";
 
 const NewsLetters = () => {
+    const [news, setNews] = useState([]);
+    const [selectedPdf, setSelectedPdf] = useState(null);
+    const [pdfName, setPdfName] = useState(null)
+
+    const handlePdfClick = async (newsletterId) => {
+        try {
+            const response = await fetch(`https://localhost:44345/api/NewsLetters/${newsletterId}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const blob = await response.blob();
+            const pdfUrl = URL.createObjectURL(blob);
+            setPdfName()
+            setSelectedPdf(pdfUrl);
+        } catch (error) {
+            console.error("Fetch error: " + error.message);
+        }
+    };
+
+    useEffect(() => {
+        async function fetchNews() {
+            try {
+                const response = await fetch('https://localhost:44345/api/NewsLetters');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                if (data && data.length > 0) {
+                    handlePdfClick(data[0].id);
+                    setPdfName(data[0].name);
+                    setNews(data);
+                } else {
+                    console.error("No news data available");
+                }
+            } catch (error) {
+                console.error("Fetch error: " + error.message);
+            }
+        }
+
+        fetchNews();
+    }, []);
+
+    const PdfViewer = () => {
+        useEffect(() => {
+            const loadScript = () => {
+                const script = document.createElement('script');
+                script.src = "https://acrobatservices.adobe.com/view-sdk/viewer.js";
+                script.async = true;
+                document.body.appendChild(script);
+                const previewConfig = {
+                    embedMode: "FULL_WINDOW",
+                    defaultViewMode: "FIT_WIDTH",
+                    showDownloadPDF: true,
+                    showZoomControl: true,
+                    showAnnotationTools: false,
+                    enableFormFilling: false,
+                    includePDFAnnotations: false,
+                    showThumbnails: true,
+                    showPrintPDF: true,
+                }
+                script.onload = () => {
+                    if (window.AdobeDC) {
+                        var adobeDCView = new window.AdobeDC.View({ clientId: 'c3020d79845b4af984c540bf6043d682' });
+                        console.log(selectedPdf);
+                        adobeDCView.previewFile({
+                            content: { location: { url: selectedPdf } },
+                            metaData: { fileName: pdfName }
+                        }, previewConfig);
+                    }
+                };
+            };
+
+            loadScript();
+        }, []);
+
+        return <div id="adobe-dc-view" style={{ width: "100%", height: "100%" }} />;
+    };
   return (
-    <section class="section-newsletter">
-      <div class="container">
-        <nav className="breadcrumb">
-          <ul>
-            <li>
-              <a className="breadcrumb-link" href="#">
-                Home
-              </a>
-            </li>
-            <li>
-              <a className="breadcrumb-link" href="#">
-                News Letters
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <h1 class="heading-newsletter">News Letters</h1>
-        <p class="heading-description">
-          The newsletter of the East York Garden Club, is published six times a
-          year.
-        </p>
-
-        <table>
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Title</th>
-              <th>date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-            <tr class="first-row">
-              <td class="no">01</td>
-              <td class="title">Sept/Oct 2023</td>
-              <td class="date">Sept 17, 2023</td>
-            </tr>
-          </tbody>
-        </table>
-        <nav className="pagination">
-          <ul>
-            <li className="page-item">
-              <a className="page-link Previous" href="#">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                1
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                2
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                3
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                4
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                5
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                6
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                7
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                8
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                6
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                7
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                8
-              </a>
-            </li>
-
-            <li className="page-item">
-              <a className="page-link Next" href="#">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <section className="section-newsletter">
+          <div className="news-page-container">
+              <main className="news-main">
+                  { <PdfViewer />}
+              </main>
+              <aside className="news-sidebar">
+                  <nav className="news-sidebar-nav">
+                      <ul>
+                          {news.map((news, index) => (
+                              <li key={index}>
+                                  <button onClick={() => handlePdfClick(news.id)}>
+                                      {news.name}
+                                  </button>
+                              </li>
+                          ))}
+                      </ul>
+                  </nav>
+              </aside>
+          </div>
     </section>
   );
 };

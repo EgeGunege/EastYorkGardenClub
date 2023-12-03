@@ -1,6 +1,13 @@
 .section-newsletter {
-  padding: 6.4rem 0 12.8rem 0;
+
 }
+
+.news-page-container {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    height: 85.5vh;
+}
+
 .heading-newsletter {
   font-size: 6rem;
   font-weight: 700;
@@ -57,3 +64,53 @@ ul li {
   font-size: 1.6rem;
   color: #333333;
 }
+.news-main {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+.news-sidebar {
+    width: 30rem;
+    background-color: #f8f9fa;
+    color: white;
+    padding: 40px;
+}
+
+.news-sidebar-title {
+    padding: 10px 0;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.news-sidebar-user {
+    padding: 10px 0;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.news-sidebar-nav {
+    margin-top: 20px;
+}
+
+.news-sidebar-menu {
+    list-style: none;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+    .news-sidebar-menu li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        transition: background-color 0.3s;
+    }
+
+        .news-sidebar-menu li a:hover {
+            opacity: 0.30;
+            cursor: pointer;
+        }
