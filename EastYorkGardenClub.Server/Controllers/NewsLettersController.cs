@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.Net.Http.Headers;
 using EastYorkGardenClub.Server.Data;
 using EastYorkGardenClub.Server.Data.DTOs;
@@ -21,14 +22,15 @@ namespace EastYorkGardenClub.Server.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<NewsLetter>>> GetNewsletterList()
+        public async Task<ActionResult<IEnumerable<NewsLetter>>> GetNewsletter()
         {
             var newsletters = await _context.NewsLetters
                                 .OrderByDescending(n => n.UploadDate)
                                 .Select(n => new NewsLettersDTO
                                 {
                                     ID = n.ID,
-                                    Name = n.Name
+                                    Name = n.Name,
+                                    UploadDate = DateTime.Now
                                 })
                                 .ToListAsync();
 
@@ -41,14 +43,14 @@ namespace EastYorkGardenClub.Server.Controllers
             var newsletter = await _context.NewsLetters
                                            .FirstOrDefaultAsync(n => n.ID == id);
 
-            if (newsletter == null || newsletter.FileData == null)
+            if (newsletter == null || newsletter.NewsFileData == null)
             {
                 return NotFound();
             }
 
-            var stream = new MemoryStream(newsletter.FileData);
+            var stream = new MemoryStream(newsletter.NewsFileData);
 
-            return File(stream, newsletter.FileContentType, newsletter.Name);
+            return File(stream, newsletter.NewsFileContentType!, newsletter.Name);
         }
 
         [HttpDelete("{id}")]
@@ -81,13 +83,27 @@ namespace EastYorkGardenClub.Server.Controllers
                 UploadDate = DateTime.UtcNow
             };
 
+            if (model.Name.Contains('/'))
+            {
+                var splitName = model.Name.Split('/');
+                var lastPart = splitName.Last();
+                if (DateTime.TryParseExact(lastPart, "MMMM yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime customDate))
+                {
+                    newsletter.UploadDate = customDate;
+                }
+                else
+                {
+                    newsletter.UploadDate = DateTime.UtcNow;
+                }
+            }
+
             if (model.File != null)
             {
                 using (var memoryStream = new MemoryStream())
                 {
                     await model.File.CopyToAsync(memoryStream);
-                    newsletter.FileData = memoryStream.ToArray();
-                    newsletter.FileContentType = model.File.ContentType;
+                    newsletter.NewsFileData = memoryStream.ToArray();
+                    newsletter.NewsFileContentType = model.File.ContentType;
                 }
             }
 
@@ -98,8 +114,8 @@ namespace EastYorkGardenClub.Server.Controllers
         }
         public class NewsLetterViewModel
         {
-            public string Name { get; set; }
-            public IFormFile File { get; set; }
+            public required string Name { get; set; }
+            public required IFormFile File { get; set; }
         }
     }
 }

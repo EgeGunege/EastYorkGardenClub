@@ -32,8 +32,8 @@ namespace EastYorkGardenClub.Server.Controllers
                                     Date = m.Date,
                                     Speaker = m.Speaker,
                                     Details = m.Details,
-                                    ImageData = m.ImageData != null ? Convert.ToBase64String(m.ImageData) : null,
-                                    ImageContentType = m.ImageContentType
+                                    ImageData = Convert.ToBase64String(m.ImageData!),
+                                    ImageContentType = m.ImageContentType!
                                 })
                                 .ToListAsync();
 
@@ -91,11 +91,11 @@ namespace EastYorkGardenClub.Server.Controllers
 
         public class MeetingViewModel
         {
-            public string Title { get; set; }
-            public DateTime Date { get; set; }
-            public IFormFile Image { get; set; }
-            public string Details { get; set; }
-            public string Speaker { get; set; }
+            public required string Title { get; set; }
+            public required DateTime Date { get; set; }
+            public required IFormFile Image { get; set; }
+            public required string Details { get; set; }
+            public required string Speaker { get; set; }
         }
     }
 }

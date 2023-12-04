@@ -24,16 +24,15 @@ builder.Services.AddCors(options =>
 
 var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>();
 
-builder.Services.AddSingleton(jwtSettings);
+builder.Services.AddSingleton(jwtSettings!);
 
-// Configure JWT authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings!.Key)),
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidIssuer = jwtSettings.Issuer,
@@ -65,10 +64,6 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.MapControllers(); // This sets up the endpoints for the controllers, we don't need to call UseEndpoints separately.
-
-// The app.MapFallbackToFile("index.html"); is typically used for single-page applications (SPA). 
-// Uncomment the line below if your application is a SPA and you want to serve "index.html" for any non-API requests.
-// app.MapFallbackToFile("index.html");
+app.MapControllers();
 
 app.Run();

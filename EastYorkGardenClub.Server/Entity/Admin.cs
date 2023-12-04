@@ -2,9 +2,9 @@
 {
     public class Admin
     {
-        public Guid ID { get; set; }
-        public string AdminName { get; set; }
-        public string AdminEmail { get; set; }
-        public string Password { get; set; }
+        public required Guid ID { get; set; }
+        public required string AdminName { get; set; }
+        public required string AdminEmail { get; set; }
+        public required string Password { get; set; }
     }
 }

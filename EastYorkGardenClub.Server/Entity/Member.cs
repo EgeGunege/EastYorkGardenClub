@@ -2,8 +2,8 @@
 {
     public class Member
     {
-        public Guid ID { get; set; }
-        public string MemberName { get; set; }
-        public string MemberEmail { get; set; }
+        public required Guid ID { get; set; }
+        public required string MemberName { get; set; }
+        public required string MemberEmail { get; set; }
     }
 }

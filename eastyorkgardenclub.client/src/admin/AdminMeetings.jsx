@@ -73,14 +73,14 @@ const AdminMeetings = () => {
         e.stopPropagation();
     }
 
-    const handleFormSubmit = async (event) => {
+    const handleMeetingFormSubmit = async (event) => {
         event.preventDefault();
 
         const formData = new FormData();
         formData.append('title', title);
         formData.append('date', date);
         formData.append('image', image);
-        formData.append('readMoreLink', details);
+        formData.append('details', details);
         formData.append('speaker', speaker);
 
         const response = await fetch('https://localhost:44345/api/meetings', {
@@ -95,14 +95,19 @@ const AdminMeetings = () => {
             setDetails('');
             setSpeaker('');
             setErrorMessage('');
-            document.querySelector('#meetingsLink').click()
+            const updateResponse = await fetch('https://localhost:44345/api/Meetings');
+            if (!updateResponse.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const updateData = await updateResponse.json();
+            setMeetings(updateData);
         } else {
-            setErrorMessage('Failed to upload meeting details. Please try again.');
+            setErrorMessage('Failed to upload news. Please try again.');
         }
     };
 
     return (
-        <form className="admin-form-container" onSubmit={handleFormSubmit}>
+        <form className="admin-form-container" onSubmit={handleMeetingFormSubmit}>
             <div className="field-group">
                 <input
                     className="form-control"
