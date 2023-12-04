@@ -70,8 +70,8 @@
   border-bottom: 1px solid #808080;
 } */
 .navigatepage-box {
-  border-top: 1px solid #808080;
-  border-bottom: 1px solid #808080;
+  border-top: 1.8px solid #cbcbcb;
+  border-bottom: 1.8px solid #cbcbcb;
   margin-bottom: 4.8rem;
 }
 .navigatepage-wrap {
@@ -84,7 +84,7 @@
 }
 
 .navigatepage-box .navigatepage-wrap:last-child {
-  border-top: 1px solid #808080;
+  border-top: 1.8px solid #cbcbcb;
 }
 
 .next,
