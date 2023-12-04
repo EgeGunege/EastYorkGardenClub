@@ -1,103 +1,164 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./css/NewsLetters.css";
+import { FunnelOutline } from "react-ionicons";
 
 const NewsLetters = () => {
-    const [news, setNews] = useState([]);
-    const [selectedPdf, setSelectedPdf] = useState(null);
-    const [pdfName, setPdfName] = useState(null)
+  const [news, setNews] = useState([]);
+  const [selectedPdf, setSelectedPdf] = useState(null);
+  const [pdfName, setPdfName] = useState(null);
 
-    const handlePdfClick = async (newsletterId,newsletterName) => {
-        try {
-            const response = await fetch(`https://localhost:44345/api/NewsLetters/${newsletterId}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            const blob = await response.blob();
-            const pdfUrl = URL.createObjectURL(blob);
-            setPdfName(newsletterName);
-            setSelectedPdf(pdfUrl);
-        } catch (error) {
-            console.error("Fetch error: " + error.message);
+  const handlePdfClick = async (newsletterId, newsletterName) => {
+    try {
+      const response = await fetch(
+        `https://localhost:44345/api/NewsLetters/${newsletterId}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const blob = await response.blob();
+      const pdfUrl = URL.createObjectURL(blob);
+      setPdfName(newsletterName);
+      setSelectedPdf(pdfUrl);
+    } catch (error) {
+      console.error("Fetch error: " + error.message);
+    }
+  };
+
+  useEffect(() => {
+    async function fetchNews() {
+      try {
+        const response = await fetch("https://localhost:44345/api/NewsLetters");
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
-    };
+        const data = await response.json();
+        if (data && data.length > 0) {
+          handlePdfClick(data[0].id, data[0].name);
+          setPdfName(data[0].name);
+          setNews(data);
+        } else {
+          console.error("No news data available");
+        }
+      } catch (error) {
+        console.error("Fetch error: " + error.message);
+      }
+    }
 
+    fetchNews();
+  }, []);
+
+  const PdfViewer = () => {
     useEffect(() => {
-        async function fetchNews() {
-            try {
-                const response = await fetch('https://localhost:44345/api/NewsLetters');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const data = await response.json();
-                if (data && data.length > 0) {
-                    handlePdfClick(data[0].id,data[0].name);
-                    setPdfName(data[0].name);
-                    setNews(data);
-                } else {
-                    console.error("No news data available");
-                }
-            } catch (error) {
-                console.error("Fetch error: " + error.message);
-            }
-        }
+      const loadScript = () => {
+        const script = document.createElement("script");
+        script.src = "https://acrobatservices.adobe.com/view-sdk/viewer.js";
+        script.async = true;
+        document.body.appendChild(script);
+        const previewConfig = {
+          embedMode: "FULL_WINDOW",
+          defaultViewMode: "FIT_WIDTH",
+          showDownloadPDF: true,
+          showZoomControl: true,
+          showAnnotationTools: false,
+          enableFormFilling: false,
+          includePDFAnnotations: false,
+          showThumbnails: true,
+          showPrintPDF: true,
+        };
+        script.onload = () => {
+          if (window.AdobeDC) {
+            var adobeDCView = new window.AdobeDC.View({
+              clientId: "c3020d79845b4af984c540bf6043d682",
+            });
+            adobeDCView.previewFile(
+              {
+                content: { location: { url: selectedPdf } },
+                metaData: { fileName: pdfName },
+              },
+              previewConfig
+            );
+          }
+        };
+      };
 
-        fetchNews();
+      loadScript();
     }, []);
 
-    const PdfViewer = () => {
-        useEffect(() => {
-            const loadScript = () => {
-                const script = document.createElement('script');
-                script.src = "https://acrobatservices.adobe.com/view-sdk/viewer.js";
-                script.async = true;
-                document.body.appendChild(script);
-                const previewConfig = {
-                    embedMode: "FULL_WINDOW",
-                    defaultViewMode: "FIT_WIDTH",
-                    showDownloadPDF: true,
-                    showZoomControl: true,
-                    showAnnotationTools: false,
-                    enableFormFilling: false,
-                    includePDFAnnotations: false,
-                    showThumbnails: true,
-                    showPrintPDF: true,
-                }
-                script.onload = () => {
-                    if (window.AdobeDC) {
-                        var adobeDCView = new window.AdobeDC.View({ clientId: 'c3020d79845b4af984c540bf6043d682' });
-                        adobeDCView.previewFile({
-                            content: { location: { url: selectedPdf } },
-                            metaData: { fileName: pdfName }
-                        }, previewConfig);
-                    }
-                };
-            };
-
-            loadScript();
-        }, []);
-
-        return <div id="adobe-dc-view" style={{ width: "100%", height: "100%" }} />;
-    };
+    return (
+      <div id="adobe-dc-view" style={{ width: "100%", height: "87rem" }} />
+    );
+  };
   return (
-    <section className="section-newsletter">
-          <div className="news-page-container">
-              <main className="news-main">
-                  {selectedPdf? <PdfViewer />:null}
-              </main>
-              <aside className="news-sidebar">
-                  <nav className="news-sidebar-nav">
-                      <ul className="news-sidebar-menu">
-                          {news.map((news, index) => (
-                              <li key={index}>
-                                  <button onClick={() => handlePdfClick(news.id,news.name)}>
-                                      {news.name}
-                                  </button>
-                              </li>
-                          ))}
-                      </ul>
-                  </nav>
-              </aside>
+    <section className="section-newsletters">
+      <div className="container">
+        <nav className="breadcrumb">
+          <ul>
+            <li>
+              <a className="breadcrumb-link" href="#">
+                Home
+              </a>
+            </li>
+            <li>
+              <a className="breadcrumb-link" href="#">
+                News letters
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <h1 className="heading-newsletters">News letters</h1>
+        <div className="grid newsletter-grid">
+          <div className="news-pdfviewer">
+            {selectedPdf ? <PdfViewer /> : null}
           </div>
+          <div className="news-sidebar">
+            <div className="list-info">
+               <p className="list-total">
+                  Total <span>{news.length.toString()}</span>
+              </p>
+              <div>
+                <FunnelOutline
+                  color={"#00000"}
+                  title={""}
+                  height="2rem"
+                  width="2rem"
+                />
+              </div>
+            </div>
+            <ul className="newsletter-list">
+              <li className="newsletter-title">Title</li>
+              {news.map((news, index) => (
+                <li className="newsletter-item" key={index}>
+                  <Link onClick={() => handlePdfClick(news.id, news.name)}>
+                    {news.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <nav className="pagination">
+              <ul>
+                <li className="page-item">
+                  <a className="page-link Previous" href="#">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li className="page-item">
+                  <a className="page-link" href="#">
+                    1
+                  </a>
+                </li>
+
+                <li className="page-item">
+                  <a className="page-link Next" href="#">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
