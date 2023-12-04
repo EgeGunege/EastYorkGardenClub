@@ -6,7 +6,7 @@ const NewsLetters = () => {
     const [selectedPdf, setSelectedPdf] = useState(null);
     const [pdfName, setPdfName] = useState(null)
 
-    const handlePdfClick = async (newsletterId) => {
+    const handlePdfClick = async (newsletterId,newsletterName) => {
         try {
             const response = await fetch(`https://localhost:44345/api/NewsLetters/${newsletterId}`);
             if (!response.ok) {
@@ -14,7 +14,7 @@ const NewsLetters = () => {
             }
             const blob = await response.blob();
             const pdfUrl = URL.createObjectURL(blob);
-            setPdfName()
+            setPdfName(newsletterName);
             setSelectedPdf(pdfUrl);
         } catch (error) {
             console.error("Fetch error: " + error.message);
@@ -30,7 +30,7 @@ const NewsLetters = () => {
                 }
                 const data = await response.json();
                 if (data && data.length > 0) {
-                    handlePdfClick(data[0].id);
+                    handlePdfClick(data[0].id,data[0].name);
                     setPdfName(data[0].name);
                     setNews(data);
                 } else {
@@ -65,7 +65,6 @@ const NewsLetters = () => {
                 script.onload = () => {
                     if (window.AdobeDC) {
                         var adobeDCView = new window.AdobeDC.View({ clientId: 'c3020d79845b4af984c540bf6043d682' });
-                        console.log(selectedPdf);
                         adobeDCView.previewFile({
                             content: { location: { url: selectedPdf } },
                             metaData: { fileName: pdfName }
@@ -83,14 +82,14 @@ const NewsLetters = () => {
     <section className="section-newsletter">
           <div className="news-page-container">
               <main className="news-main">
-                  { <PdfViewer />}
+                  {selectedPdf? <PdfViewer />:null}
               </main>
               <aside className="news-sidebar">
                   <nav className="news-sidebar-nav">
-                      <ul>
+                      <ul className="news-sidebar-menu">
                           {news.map((news, index) => (
                               <li key={index}>
-                                  <button onClick={() => handlePdfClick(news.id)}>
+                                  <button onClick={() => handlePdfClick(news.id,news.name)}>
                                       {news.name}
                                   </button>
                               </li>

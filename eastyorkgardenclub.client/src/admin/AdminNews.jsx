@@ -33,9 +33,10 @@ const AdminNews = () => {
         })
             .then(response => {
                 if (response.ok) {
+                    setErrorMessage('');
                     setNews(news.filter(meeting => meeting.id !== newsId));
                 } else {
-                    alert('The meeting could not be deleted');
+                    setErrorMessage('The meeting could not be deleted');
                 }
             })
             .catch(error => console.error('There was an error:', error));
@@ -56,29 +57,42 @@ const AdminNews = () => {
         e.stopPropagation();
     }
 
-    const handleFormSubmit = async (event) => {
+    const handleNewsFormSubmit = async (event) => {
         event.preventDefault();
 
         const formData = new FormData();
         formData.append('Name', name);
         formData.append('File', file);
 
-        const response = await fetch('https://localhost:44345/api/NewsLetters', {
-            method: 'POST',
-            body: formData,
-        });
+        try {
+            const response = await fetch('https://localhost:44345/api/NewsLetters', {
+                method: 'POST',
+                body: formData,
+            });
 
-        if (response.ok) {
-            setName('');
-            setErrorMessage('');
-            document.querySelector('#newsLink').click()
-        } else {
-            setErrorMessage('Failed to upload meeting details. Please try again.');
+            if (response.ok) {
+                setName('');
+                setFile(null);
+                setErrorMessage('');
+                const updatedResponse = await fetch('https://localhost:44345/api/NewsLetters');
+                if (updatedResponse.ok) {
+                    const updatedNews = await updatedResponse.json();
+                    setNews(updatedNews);
+                }
+            } else {
+                setErrorMessage('Failed to upload news. Please try again.');
+                console.error('Response not OK:', response);
+                const responseText = await response.text();
+                console.error('Response text:', responseText);
+            }
+        } catch (error) {
+            console.error('Error occurred:', error);
+            setErrorMessage('An error occurred. Please try again.');
         }
     };
 
     return (
-        <form className="admin-form-container" onSubmit={handleFormSubmit}>
+        <form className="admin-form-container" onSubmit={handleNewsFormSubmit}>
             <div className="field-group">
                 <input
                     className="form-control"
@@ -93,7 +107,7 @@ const AdminNews = () => {
                     className="drop-zone"
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
-                    onClick={() => document.getElementById('image-upload').click()}
+                    onClick={() => document.getElementById('pdf-upload').click()}
                 >
                     {file ? file.name : ("Drag and drop an file here or click to select")}
                 </div>

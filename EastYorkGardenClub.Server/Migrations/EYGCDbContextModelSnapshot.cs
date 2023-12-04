@@ -59,11 +59,9 @@ namespace EastYorkGardenClub.Server.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageContentType")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("ImageData")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Speaker")
@@ -104,17 +102,15 @@ namespace EastYorkGardenClub.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("FileContentType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("FileData")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NewsFileContentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("NewsFileData")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("UploadDate")
                         .HasColumnType("datetime2");

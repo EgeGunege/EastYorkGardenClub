@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EastYorkGardenClub.Server.Migrations
 {
     [DbContext(typeof(EYGCDbContext))]
-    [Migration("20231129225537_Meetings")]
-    partial class Meetings
+    [Migration("20231203225109_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,11 +57,17 @@ namespace EastYorkGardenClub.Server.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Details")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ReadMoreLink")
+                    b.Property<string>("ImageContentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Speaker")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -91,6 +97,30 @@ namespace EastYorkGardenClub.Server.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("EastYorkGardenClub.Server.Entity.NewsLetter", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NewsFileContentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("NewsFileData")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<DateTime>("UploadDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("NewsLetters");
                 });
 #pragma warning restore 612, 618
         }

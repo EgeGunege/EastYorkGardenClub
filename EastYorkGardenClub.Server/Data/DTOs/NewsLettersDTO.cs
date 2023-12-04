@@ -2,10 +2,10 @@
 {
     public class NewsLettersDTO
     {
-        public Guid ID { get; set; }
-        public string Name { get; set; }
-        public byte[] FileData { get; set; }
-        public string FileContentType { get; set; }
-        public string UploadDate { get; set; }
+        public required Guid ID { get; set; }
+        public required string Name { get; set; }
+        public byte[]? NewsFileData { get; set; }
+        public string? NewsFileContentType { get; set; }
+        public required DateTime UploadDate { get; set; }
     }
 }
