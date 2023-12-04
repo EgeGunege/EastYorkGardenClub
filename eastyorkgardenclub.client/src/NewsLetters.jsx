@@ -113,8 +113,8 @@ const NewsLetters = () => {
           </div>
           <div className="news-sidebar">
             <div className="list-info">
-              <p className="list-total">
-                Total <span>125</span>
+               <p className="list-total">
+                  Total <span>{news.length.toString()}</span>
               </p>
               <div>
                 <FunnelOutline
