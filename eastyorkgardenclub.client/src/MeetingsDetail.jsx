@@ -1,26 +1,44 @@
 import { CalendarOutline, TimeOutline, MicOutline, LocationOutline } from 'react-ionicons'
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./css/MeetingsDetail.css";
 
-const MeetingsDetail = () => {
+const MeetingsDetail = ({ onPageChange }) => {
+    const [meetings, setMeetings] = useState([]);
+    useEffect(() => {
+        async function fetchMeetings() {
+            try {
+                const response = await fetch("https://localhost:44345/api/Meetings");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                setMeetings(data);
+            } catch (error) {
+                console.error("Fetch error: " + error.message);
+            }
+        }
+
+        fetchMeetings();
+    }, []);
   return (
     <section className="section-meeting-details">
       <div className="container">
         <nav className="breadcrumb">
           <ul>
             <li>
-              <a className="breadcrumb-link" href="#">
-                Home
-              </a>
+                <Link className="breadcrumb-link" onClick={()=>onPageChange('home')}>
+                    Home
+                </Link>
             </li>
             <li>
-              <a className="breadcrumb-link" href="#">
-                Meetings
-              </a>
+                <Link className="breadcrumb-link" onClick={() => onPageChange('meetings')}>
+                    Meetings
+                </Link>
             </li>
-            <li>
-              <a className="breadcrumb-link" href="#">
+            <li className="breadcrumb-link">
                 Meeting Details
-              </a>
             </li>
           </ul>
         </nav>
@@ -109,6 +127,10 @@ const MeetingsDetail = () => {
       </div>
     </section>
   );
+};
+
+MeetingsDetail.propTypes = {
+    onPageChange: PropTypes.func,
 };
 
 export default MeetingsDetail;

@@ -123,6 +123,11 @@ body {
   font-size: 1.3rem;
   color: #454545;
   text-decoration: none;
+  cursor:pointer
+}
+
+.breadcrumb li:last-child {
+    cursor:default;
 }
 
 .breadcrumb li:not(:first-child)::before {
