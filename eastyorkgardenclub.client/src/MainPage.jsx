@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import Logo from "/src/img/eastyorkgardenclublogo.gif";
 import Sections from "./mainPage/Sections";
 import JoinUs from "./JoinUs";
@@ -10,27 +9,28 @@ import About from "./About";
 import "./css/general.css";
 import "./css/mainPage/index.css";
 import { LogoFacebook } from 'react-ionicons'
-import { useEffect } from "react";
 import MeetingsDetail from "./MeetingsDetail";
 
-const MainPage = ({ sectionName = null }) => {
-  const [currentPage, setCurrentPage] = useState("home");
-  useEffect(() => {
-    sectionName ? setCurrentPage(sectionName) : null;
-  }, []);
+const MainPage = () => {
+  const [currentPage, setCurrentPage] = useState('');
+
+  const handlePageChange = (newPage) => {
+    console.log('hit' + newPage)
+    setCurrentPage(newPage);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
       case "home":
         return <Sections />;
       case "about":
-        return <About />;
+        return <About onPageChange={handlePageChange} />;
       case "meetings":
         return <Meetings />;
       case "news":
         return <NewsLetters />;
       case "shows":
-        return <MeetingsDetail />;
+        return <MeetingsDetail onPageChange={handlePageChange} />;
       case "joinus":
         return <JoinUs />;
       default:
@@ -129,10 +129,6 @@ const MainPage = ({ sectionName = null }) => {
       <Footer />
     </div>
   );
-};
-
-MainPage.propTypes = {
-  sectionName: PropTypes.string,
 };
 
 export default MainPage;
