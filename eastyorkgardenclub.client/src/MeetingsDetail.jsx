@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./css/MeetingsDetail.css";
+import {
+  CalendarOutline,
+  TimeOutline,
+  MicOutline,
+  LocationOutline,
+  DocumentAttachOutline,
+} from "react-ionicons";
+
 
 const MeetingsDetail = ({ onPageChange }) => {
     const [meetings, setMeetings] = useState([]);
@@ -47,10 +55,10 @@ const MeetingsDetail = ({ onPageChange }) => {
         <div className="meeting-detail-box">
           <div className="meeting-detail">
             <CalendarOutline
-                color={'#00000'}
-                title={''}
-                height="2.4rem"
-                width="2.4rem"
+              color={"#808080"}
+              title={""}
+              height="2.4rem"
+              width="2.4rem"
             />
             <div>
               <span className="meeting-detail-title">Date</span>
@@ -59,10 +67,10 @@ const MeetingsDetail = ({ onPageChange }) => {
           </div>
           <div className="meeting-detail">
             <TimeOutline
-                color={'#00000'}
-                title={''}
-                height="2.4rem"
-                width="2.4rem"
+              color={"#808080"}
+              title={""}
+              height="2.4rem"
+              width="2.4rem"
             />
             <div>
               <span className="meeting-detail-title">Time</span>
@@ -71,10 +79,10 @@ const MeetingsDetail = ({ onPageChange }) => {
           </div>
           <div className="meeting-detail">
             <MicOutline
-                color={'#00000'}
-                title={''}
-                height="2.4rem"
-                width="2.4rem"
+              color={"#808080"}
+              title={""}
+              height="2.4rem"
+              width="2.4rem"
             />
             <div>
               <span className="meeting-detail-title">Speaker</span>
@@ -83,10 +91,10 @@ const MeetingsDetail = ({ onPageChange }) => {
           </div>
           <div className="meeting-detail">
             <LocationOutline
-                color={'#454545'}
-                title={''}
-                height="2.4rem"
-                width="2.4rem"
+              color={"#808080"}
+              title={""}
+              height="2.4rem"
+              width="2.4rem"
             />
             <div>
               <span className="meeting-detail-title">Location</span>
@@ -124,6 +132,35 @@ const MeetingsDetail = ({ onPageChange }) => {
           presently, coordinating CAMH Sunshine Garden and Community Gardens
           programs in Foodshare.
         </p>
+        <div className="attatch-file-box">
+          <div className="attatch-file-wrap">
+            <DocumentAttachOutline
+              color={"#808080"}
+              title={""}
+              height="2.4rem"
+              width="2.4rem"
+            />
+
+            <a className="attatch-file-name" href="">
+              September flower show schedule (12KB)
+            </a>
+          </div>
+        </div>
+        <div className="navigatepage-box">
+          <div className="navigatepage-wrap">
+            <div className="next">Next</div>
+            <p>Sustainable Design</p>
+          </div>
+          <div className="navigatepage-wrap">
+            <div className="previous">Previous</div>
+            <p>Sustainable Design</p>
+          </div>
+        </div>
+        <div className="list-btn-box">
+          <a className="list-btn" href="">
+            List
+          </a>
+        </div>
       </div>
     </section>
   );
