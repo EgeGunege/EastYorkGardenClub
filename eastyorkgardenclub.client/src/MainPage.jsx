@@ -12,29 +12,32 @@ import { LogoFacebook } from 'react-ionicons'
 import MeetingsDetail from "./MeetingsDetail";
 
 const MainPage = () => {
-  const [currentPage, setCurrentPage] = useState('');
+    const [currentPage, setCurrentPage] = useState('');
+    const [meetingId, setMeetingId] = useState('');
 
-  const handlePageChange = (newPage) => {
-    console.log('hit' + newPage)
-    setCurrentPage(newPage);
+  const handlePageChange = (newPage, meetingId=null) => {
+      setCurrentPage(newPage);
+      setMeetingId(meetingId);
   };
 
   const renderPage = () => {
     switch (currentPage) {
       case "home":
-        return <Sections />;
+        return <Sections onPageChange={handlePageChange} />;
       case "about":
         return <About onPageChange={handlePageChange} />;
       case "meetings":
-        return <Meetings />;
+        return <Meetings onPageChange={handlePageChange} />;
       case "news":
-        return <NewsLetters />;
+        return <NewsLetters onPageChange={handlePageChange} />;
       case "shows":
-        return <MeetingsDetail onPageChange={handlePageChange} />;
+        return null;
       case "joinus":
-        return <JoinUs />;
+        return <JoinUs onPageChange={handlePageChange} />;
+      case "meetingDetail":
+        return <MeetingsDetail onPageChange={handlePageChange} meetingID={meetingId} />;
       default:
-        return <Sections />;
+        return <Sections onPageChange={handlePageChange} />;
     }
   };
 

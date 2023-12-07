@@ -138,3 +138,12 @@
 .newsletter-item a:active {
   color: #8f4b88;
 }
+
+.search-box {
+    width: 20rem;
+    height: 3rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    margin-left:1rem;
+}
