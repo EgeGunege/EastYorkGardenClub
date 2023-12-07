@@ -41,6 +41,34 @@ namespace EastYorkGardenClub.Server.Controllers
 
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Meeting>>> GetMeeting(Guid id)
+        {
+            var meetingEntity = await _context.Meetings
+                                .FirstOrDefaultAsync(m => m.ID == id);
+
+            if (meetingEntity != null)
+            {
+                var meetingDTO = new MeetingDTO
+                {
+                    ID = meetingEntity.ID,
+                    Title = meetingEntity.Title,
+                    Date = meetingEntity.Date,
+                    Speaker = meetingEntity.Speaker,
+                    Details = meetingEntity.Details,
+                    ImageData = Convert.ToBase64String(meetingEntity.ImageData!),
+                    ImageContentType = meetingEntity.ImageContentType!
+                };
+
+                return Ok(meetingDTO);
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMeeting(Guid id)
         {

@@ -38,12 +38,12 @@ const AdminPage = ({adminName}) => {
 
     return (
         <div className="admin-page-container">
-            <aside className="sidebar">
+            <aside className="admin-sidebar">
                 <img src={Logo} alt="Logo" className="login-logo" />
-                <h1 className="sidebar-title">East York Garden Club Admin Page</h1>
-                <h4 className="sidebar-user">Welcome, {adminName}</h4>
-                <nav className="sidebar-nav">
-                    <ul className="sidebar-menu">
+                <h1 className="admin-sidebar-title">East York Garden Club Admin Page</h1>
+                <h4 className="admin-sidebar-user">Welcome, {adminName}</h4>
+                <nav className="admin-sidebar-nav">
+                    <ul className="admin-sidebar-menu">
                         {navItems.map(item => (
                             <li key={item.label}>
                                 <a id={item.to+'Link'} onClick={() => setCurrentPage(item.to)}>{item.label}</a>

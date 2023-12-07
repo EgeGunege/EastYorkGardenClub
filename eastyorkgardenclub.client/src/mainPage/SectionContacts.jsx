@@ -62,18 +62,20 @@ function SectionContacts() {
                                 required />
                         </div>
 
-                        <div>
+                        <div className="form-group">
                             <label className="message-label" htmlFor="message">Message</label>
-                            <input className="message-input"
-                                type="text"
+                            <textarea
                                 id="message"
                                 name="message"
-                                placeholder="Your message here" />
+                                className="message-input"
+                                placeholder="Your message here"
+                            />
+                            <div className="submit-btn-box">
+                                <button className="submit-btn">Submit</button>
+                            </div>
                         </div>
+                        
                     </form>
-                    <div className="submit-btn-box">
-                        <button className="submit-btn">Submit</button>
-                    </div>
                 </div>
             </div>
         </section>

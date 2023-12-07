@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import Logo from "/src/img/eastyorkgardenclublogo.gif";
 import Sections from "./mainPage/Sections";
 import JoinUs from "./JoinUs";
@@ -10,31 +9,35 @@ import About from "./About";
 import "./css/general.css";
 import "./css/mainPage/index.css";
 import { LogoFacebook } from 'react-ionicons'
-import { useEffect } from "react";
 import MeetingsDetail from "./MeetingsDetail";
 
-const MainPage = ({ sectionName = null }) => {
-  const [currentPage, setCurrentPage] = useState("home");
-  useEffect(() => {
-    sectionName ? setCurrentPage(sectionName) : null;
-  }, []);
+const MainPage = () => {
+    const [currentPage, setCurrentPage] = useState('');
+    const [meetingId, setMeetingId] = useState('');
+
+  const handlePageChange = (newPage, meetingId=null) => {
+      setCurrentPage(newPage);
+      setMeetingId(meetingId);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
       case "home":
-        return <Sections />;
+        return <Sections onPageChange={handlePageChange} />;
       case "about":
-        return <About />;
+        return <About onPageChange={handlePageChange} />;
       case "meetings":
-        return <Meetings />;
+        return <Meetings onPageChange={handlePageChange} />;
       case "news":
-        return <NewsLetters />;
+        return <NewsLetters onPageChange={handlePageChange} />;
       case "shows":
-        return <MeetingsDetail />;
+        return null;
       case "joinus":
-        return <JoinUs />;
+        return <JoinUs onPageChange={handlePageChange} />;
+      case "meetingDetail":
+        return <MeetingsDetail onPageChange={handlePageChange} meetingID={meetingId} />;
       default:
-        return <Sections />;
+        return <Sections onPageChange={handlePageChange} />;
     }
   };
 
@@ -129,10 +132,6 @@ const MainPage = ({ sectionName = null }) => {
       <Footer />
     </div>
   );
-};
-
-MainPage.propTypes = {
-  sectionName: PropTypes.string,
 };
 
 export default MainPage;
