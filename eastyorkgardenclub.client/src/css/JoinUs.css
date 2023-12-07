@@ -1,10 +1,27 @@
+.section-joinus {
+    padding: 6.4rem 0 12.8rem 0;
+    font-family: "Inter", sans-serif;
+}
+
+.heading-joinus {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #333333;
+    width: 60rem;
+    line-height: 1.4;
+    margin-bottom: 4.8rem;
+}
+.form-joinus {
+    font-size: 1.8rem;
+    font-family: "Inter", sans-serif;
+}
+
 .member-form-container {
-  max-width: 100%;
-  max-height: 100%;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .member-form-container input[type="text"],
 .member-form-container input[type="email"] {
@@ -15,28 +32,29 @@
   border-radius: 5px;
 }
 
-.member-form-container input[type="submit"],
-.member-form-container button {
-  background-color: #5c4b8b;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
-}
-.member-form-container input[type="submit"]:hover,
-.member-form-container button:hover {
-  background-color: #473d69;
-}
+    .member-form-container input[type="submit"],
+    .member-form-container button {
+        font-family: "Inter", sans-serif;
+        background-color: #8f4b88;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+    }
+        .member-form-container input[type="submit"]:hover,
+        .member-form-container button:hover {
+            font-family: "Inter", sans-serif;
+            background-color: #a56fa0;
+        }
 
-.member-form-container label {
-  display: block;
-  margin-top: 10px;
-  color: #333;
-  font-size: 1rem;
-}
+    .member-form-container label {
+        display: block;
+        margin-top: 10px;
+        color: #333;
+    }
 
 .member-form-container .field-group {
   margin-bottom: 15px;
@@ -67,20 +85,20 @@
   margin-right: 1px;
 }
 
-.member-form-container input[type="submit"],
-.member-form-container input[type="button"] {
-  background-color: #5c4b8b;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: inline-block;
-}
+    .member-form-container input[type="submit"],
+    .member-form-container input[type="button"] {
+        background-color: #8f4b88;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+    }
 
 .member-form-container input[type="submit"]:hover,
 .member-form-container input[type="button"]:hover {
-  background-color: #473d69;
+  background-color: #a56fa0;
 }
 
 .payment-method {
@@ -130,12 +148,11 @@
 }
 
 .member-form-container .selectStyle {
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-  color: #333;
-  font-size: 1rem;
-  margin-left: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    margin-left: 5px;
 }

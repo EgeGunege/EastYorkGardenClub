@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import AdminPage from './admin/AdminPage.jsx';
 import LoginPage from './admin/LoginPage.jsx';
 import MainPage from './MainPage.jsx';
-import MeetingsDetail from './MeetingsDetail.jsx';
 import { jwtDecode } from 'jwt-decode';
 var data;
 const App = () => {
@@ -63,8 +62,6 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path="/*" element={<MainPage />} />
-                <Route path="/meetings" element={<MainPage sectionName='meetings'/> } />
-                <Route path="/meetingDetail/:meetingId" element={<MeetingsDetail /> } />
                 <Route path="/login" element={!isAuthenticated ? <LoginPage onLogin={authenticateUser} /> : <Navigate to="/admin" />} />
                 <Route path="/admin" element={isAuthenticated ? <AdminPage adminName={adminName} /> : <Navigate to="/login" />} />
             </Routes>

@@ -1,9 +1,10 @@
-import React from 'react';
+import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import aboutImg from "./img/gardening-about.png";
+import "./css/About.css"
 
-class About extends React.Component {
+class About extends Component {
     constructor(props) {
         super(props);
     }

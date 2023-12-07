@@ -5,7 +5,7 @@ const AdminMeetings = () => {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [image, setImage] = useState(null);
-    const [details, setDetails] = useState('');
+    const [detail, setDetail] = useState('');
     const [speaker, setSpeaker] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [meetings, setMeetings] = useState([]);
@@ -36,6 +36,7 @@ const AdminMeetings = () => {
         })
             .then(response => {
                 if (response.ok) {
+                    setErrorMessage('');
                     setMeetings(meetings.filter(meeting => meeting.id !== meetingId));
                 } else {
                     alert('The meeting could not be deleted');
@@ -44,6 +45,10 @@ const AdminMeetings = () => {
             .catch(error => console.error('There was an error:', error));
     }
 
+    function addSingleBreakToParagraphs(text) {
+        var paragraphs = text.split('\n\n');
+        return paragraphs.join('<br/><br/>');
+    }
 
     function handleDrop(e) {
     e.preventDefault();
@@ -75,7 +80,7 @@ const AdminMeetings = () => {
 
     const handleMeetingFormSubmit = async (event) => {
         event.preventDefault();
-
+        const details = addSingleBreakToParagraphs(detail)
         const formData = new FormData();
         formData.append('title', title);
         formData.append('date', date);
@@ -92,7 +97,7 @@ const AdminMeetings = () => {
             setTitle('');
             setDate('');
             setImage(null);
-            setDetails('');
+            setDetail('');
             setSpeaker('');
             setErrorMessage('');
             const updateResponse = await fetch('https://localhost:44345/api/Meetings');
@@ -161,8 +166,8 @@ const AdminMeetings = () => {
                 <textarea
                     className="textArea"
                     placeholder="Details"
-                    value={details}
-                    onChange={(e) => setDetails(e.target.value)}
+                    value={detail}
+                    onChange={(e) => setDetail(e.target.value)}
                 />
             </div>
             {errorMessage && <div className="error-message">{errorMessage}</div>}
