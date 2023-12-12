@@ -22,7 +22,7 @@ class SectionHero extends Component {
                     </div>
                     <div className="hero-text-box">
                         <h1 className="heading-primary hero-heading">
-                            <span>Hello! Welcome to the</span> East York Gardening Club
+                            <span>Hello! Welcome to the</span> East York Garden Club
                         </h1>
                         <p className="hero-description">
                             {'Let\'s make it green together. Let\'s be happy together.'} <br />
