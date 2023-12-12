@@ -4,6 +4,7 @@ using EastYorkGardenClub.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EastYorkGardenClub.Server.Migrations
 {
     [DbContext(typeof(EYGCDbContext))]
-    partial class EYGCDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231212025450_OtherPages")]
+    partial class OtherPages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,27 +24,6 @@ namespace EastYorkGardenClub.Server.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("EastYorkGardenClub.Server.Entity.About", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AboutText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageContentType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("ImageData")
-                        .HasColumnType("varbinary(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Abouts");
-                });
 
             modelBuilder.Entity("EastYorkGardenClub.Server.Entity.Admin", b =>
                 {
@@ -64,39 +46,6 @@ namespace EastYorkGardenClub.Server.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Admins");
-                });
-
-            modelBuilder.Entity("EastYorkGardenClub.Server.Entity.Home", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ContactUsAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactUsEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GoogleMapsUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HeaderDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageContentType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("ImageData")
-                        .HasColumnType("varbinary(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Homes");
                 });
 
             modelBuilder.Entity("EastYorkGardenClub.Server.Entity.Meeting", b =>
@@ -188,32 +137,6 @@ namespace EastYorkGardenClub.Server.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Members");
-                });
-
-            modelBuilder.Entity("EastYorkGardenClub.Server.Entity.Message", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("MessageDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MessageText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("EastYorkGardenClub.Server.Entity.NewsLetter", b =>
