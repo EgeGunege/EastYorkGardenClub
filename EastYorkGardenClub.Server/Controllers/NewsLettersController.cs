@@ -96,6 +96,17 @@ namespace EastYorkGardenClub.Server.Controllers
                     newsletter.UploadDate = DateTime.UtcNow;
                 }
             }
+            else
+            {
+                if (DateTime.TryParseExact(model.Name, "MMMM yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime customDate))
+                {
+                    newsletter.UploadDate = customDate;
+                }
+                else
+                {
+                    newsletter.UploadDate = DateTime.UtcNow;
+                }
+            }
 
             if (model.File != null)
             {

@@ -14,7 +14,9 @@ class NewsLetters extends Component {
             searchTerm: '',
             filteredNews: [],
             years:[],
-            selectedYear:''
+            selectedYear: '',
+            currentPage: 1,
+            itemsPerPage: 15
         };
     }
 
@@ -123,11 +125,68 @@ class NewsLetters extends Component {
         const filteredNews = selectedYear
             ? news.filter(item => new Date(item.uploadDate).getFullYear() === parseInt(selectedYear))
             : news;
-        this.setState({ filteredNews });
+        this.setState({ filteredNews, currentPage: 1 });
+    };
+
+    handlePageChange = (newPage, event) => {
+        event.preventDefault();
+        this.setState({ currentPage: newPage });
     }
+
+    renderPagination = () => {
+        const { filteredNews, itemsPerPage, currentPage } = this.state;
+        const pageCount = Math.ceil(filteredNews.length / itemsPerPage);
+        let pages = [];
+        for (let i = 1; i <= pageCount; i++) {
+            pages.push(
+                <li key={i} className={`page-item ${currentPage === i ? 'active' : ''}`}>
+                    <a
+                        onClick={(e) => this.handlePageChange(i, e)}
+                        href="#"
+                        className="page-link"
+                    >
+                        {i}
+                    </a>
+                </li>
+            );
+        }
+        return (
+            <nav className="pagination">
+                <ul>
+                    {currentPage > 1 && (
+                        <li className="page-item">
+                            <a
+                                onClick={(e) => this.handlePageChange(currentPage - 1, e)}
+                                href="#"
+                                className="page-link Previous"
+                            >
+                                &laquo;
+                            </a>
+                        </li>
+                    )}
+                    {pages.length === 1 ? null : pages}
+                    {currentPage < pageCount && (
+                        <li className="page-item">
+                            <a
+                                onClick={(e) => this.handlePageChange(currentPage + 1, e)}
+                                href="#"
+                                className="page-link Next"
+                            >
+                                &raquo;
+                            </a>
+                        </li>
+                    )}
+                </ul>
+            </nav>
+        );
+    }
+
     
     render() {
-        const { filteredNews } = this.state;
+        const { filteredNews, currentPage, itemsPerPage } = this.state;
+        const indexOfLastItem = currentPage * itemsPerPage;
+        const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+        const currentNewsItems = filteredNews.slice(indexOfFirstItem, indexOfLastItem);
         const { onPageChange } = this.props;
         return(
             <section className="section-newsletters">
@@ -178,7 +237,7 @@ class NewsLetters extends Component {
                             </div>
                             <ul className="newsletter-list">
                                 <li className="newsletter-title">Title</li>
-                                {filteredNews.map((news, index) => (
+                                {currentNewsItems.map((news, index) => (
                                     <li className="newsletter-item" key={index}>
                                         <Link onClick={() => this.handlePdfClick(news.id, news.name)}>
                                             {news.name}
@@ -186,27 +245,7 @@ class NewsLetters extends Component {
                                     </li>
                                 ))}
                             </ul>
-
-                            <nav className="pagination">
-                                <ul>
-                                    <li className="page-item">
-                                        <a className="page-link Previous" href="#">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li className="page-item">
-                                        <a className="page-link" href="#">
-                                            1
-                                        </a>
-                                    </li>
-
-                                    <li className="page-item">
-                                        <a className="page-link Next" href="#">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            {this.renderPagination()}
                         </div>
                     </div>
                 </div>
