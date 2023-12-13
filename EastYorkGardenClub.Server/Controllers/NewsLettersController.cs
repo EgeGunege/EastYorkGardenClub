@@ -30,7 +30,7 @@ namespace EastYorkGardenClub.Server.Controllers
                                 {
                                     ID = n.ID,
                                     Name = n.Name,
-                                    UploadDate = DateTime.Now
+                                    UploadDate = n.UploadDate
                                 })
                                 .ToListAsync();
 
