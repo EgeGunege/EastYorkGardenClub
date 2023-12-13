@@ -1,4 +1,4 @@
-/* .section-newsletter {
+﻿/* .section-newsletter {
 }
 
 .news-page-container {
@@ -87,16 +87,24 @@
   column-gap: 4.8rem;
 }
 .list-total {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #505050;
   line-height: 1.6;
 }
 
 .list-info {
   display: flex;
+  align-items:center;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
+
+.list-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .newsletter-item {
   border-top: 1.8px solid #cbcbcb;
   list-style: none;
@@ -139,11 +147,12 @@
   color: #8f4b88;
 }
 
-.search-box {
+.year-filter {
     width: 20rem;
     height: 3rem;
-    padding: 10px;
-    border: 1px solid #ccc;
+    border: 0.1rem solid #ccc;
     border-radius: 1rem;
-    margin-left:1rem;
+    margin-left: 1rem;
+    background: #fff;
+    position: relative;
 }
