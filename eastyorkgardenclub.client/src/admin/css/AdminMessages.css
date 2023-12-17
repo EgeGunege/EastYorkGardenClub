@@ -1,0 +1,149 @@
+.message-page-container {
+    width: 100%;
+    display: flex;
+}
+
+.message-sidebar {
+    width: 40rem;
+    background-color: #fff;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.message-sidebar-nav {
+    padding: 0;
+    margin: 0;
+}
+
+.message-sidebar-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.message-item {
+    display: flex;
+    flex-flow: row;
+    position: relative;
+    padding: 15px 20px;
+    height:6rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    justify-content:space-between;
+    inline-size: calc(100% - 20px);
+    position: relative;
+    margin-inline: 10px;
+    border-radius: 8px;
+    margin:1rem;
+}
+
+
+    .message-item:hover,
+    .message-item:focus {
+        background-color: #f5f5f5;
+        outline: none;
+    }
+
+    .message-item.active {
+        background-color: #a56fa0;
+        font-weight: bold;
+        color: white;
+    }
+
+.message-name {
+    margin-right: auto;
+}
+
+.message-date {
+    
+}
+
+.message-view {
+    width: 100%;
+    background-color: #fff;
+    height: auto;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ddd;
+    border-radius: 8px;
+    margin-left:0.6rem;
+}
+
+.message-controls {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+    .message-controls a {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        -webkit-box-align: center;
+        align-items: center;
+        margin:1rem;
+    }
+
+.message-body {
+    width: 98%;
+    background-color: #fff;
+    height: auto;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ddd;
+    border-radius: 8px;
+    margin-left: 1rem;
+}
+
+.message-header {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
+    border-bottom: 0.2rem solid;
+    border-color: lightgrey !important;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    font-weight: bold;
+    margin-right: auto;
+    font-size:2rem;
+}
+
+.date {
+    font-weight: normal;
+    font-size: 1.5rem;
+}
+
+.header-bottom {
+    margin-top: 5px;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
+    font-size:1.5rem;
+}

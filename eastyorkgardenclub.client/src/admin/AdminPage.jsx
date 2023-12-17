@@ -4,6 +4,7 @@ import '/src/admin/css/AdminPage.css';
 import Logo from '/src/img/eastyorkgardenclublogo.gif';
 import AdminMeetings from '/src/admin/AdminMeetings.jsx';
 import AdminNews from '/src/admin/AdminNews.jsx';
+import AdminMessage from './AdminMessage';
 
 const AdminPage = ({adminName}) => {
     const [currentPage, setCurrentPage] = useState('home');
@@ -16,6 +17,8 @@ const AdminPage = ({adminName}) => {
                 return <AdminMeetings />;
             case 'news':
                 return <AdminNews />;
+            case 'messages':
+                return <AdminMessage />;
             default:
                 return null;
         }

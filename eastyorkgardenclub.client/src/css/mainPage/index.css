@@ -213,7 +213,7 @@ header {
     background-color: white;
     color: inherit;
     overflow-y: auto;
-    resize: vertical;
+    resize: none;
     box-sizing: border-box;
     line-height: 1.5;
     white-space: pre-wrap;
