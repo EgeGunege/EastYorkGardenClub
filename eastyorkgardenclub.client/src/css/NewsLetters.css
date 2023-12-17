@@ -73,6 +73,10 @@
   padding: 6.4rem 0 12.8rem 0;
 }
 
+.news-sidebar {
+    position:relative;
+}
+
 .heading-newsletters {
   font-size: 6rem;
   font-weight: 700;
@@ -117,7 +121,7 @@
   color: #8f4b88;
 }
 
-.newsletter-list:last-child {
+.newsletter-list :last-child  {
   border-bottom: 1.8px solid #cbcbcb;
 }
 .newsletter-title {
@@ -140,6 +144,7 @@
   line-height: 1.6;
   font-weight: 400;
   text-decoration: none;
+  border-bottom:none;
 }
 
 .newsletter-item a:hover,

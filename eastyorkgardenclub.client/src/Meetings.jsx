@@ -78,27 +78,6 @@ class Meetings extends Component {
                 ))}
             </div>
             </div>
-
-            <nav className="pagination">
-            <ul>
-                <li className="page-item">
-                <a className="page-link Previous" href="#">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li className="page-item">
-                <a className="page-link" href="#">
-                    1
-                </a>
-                </li>
-
-                <li className="page-item">
-                <a className="page-link Next" href="#">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
-            </ul>
-            </nav>
         </section>
         );
     }
