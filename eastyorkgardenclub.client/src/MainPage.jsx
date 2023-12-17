@@ -9,7 +9,8 @@ import About from "./About";
 import "./css/general.css";
 import "./css/mainPage/index.css";
 import { LogoFacebook } from 'react-ionicons'
-import MeetingsDetail from "./MeetingsDetail";
+import MeetingsDetail from "./MeetingsDetail"
+import FlowerShows from "./FlowerShows";
 
 const MainPage = () => {
     const [currentPage, setCurrentPage] = useState('');
@@ -31,7 +32,7 @@ const MainPage = () => {
       case "news":
         return <NewsLetters onPageChange={handlePageChange} />;
       case "shows":
-        return null;
+        return <FlowerShows onPageChange={handlePageChange} />
       case "joinus":
         return <JoinUs onPageChange={handlePageChange} />;
       case "meetingDetail":

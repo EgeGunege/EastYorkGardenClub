@@ -13,18 +13,21 @@
 
 .meeting-detail-box {
   display: flex;
-  justify-content: start;
-  gap: 8rem;
+  justify-content: space-between;
   align-items: start;
+  margin-bottom: 4.8rem;
 }
+
 .meeting-detail {
   font-size: 1.8rem;
   color: #808080;
   line-height: 1.6;
   font-weight: 400;
-  margin-bottom: 2.4rem;
   display: flex;
-  gap: 1.6rem;
+  /* padding: 0 12.8rem 0 0; */
+}
+.icon-meeting-detail {
+  margin-right: 1.2rem;
 }
 
 .meeting-detail-title {
@@ -37,7 +40,7 @@
   color: #808080;
   line-height: 1.6;
   font-weight: 400;
-  margin-top: 1.6rem;
+  /* padding: 0 8rem; */
   margin-bottom: 9.6rem;
 }
 
