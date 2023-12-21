@@ -1,0 +1,41 @@
+.section-flowershows-rules {
+  padding: 6.4rem 0 12.8rem 0;
+}
+.container td {
+  font-size: 1.6rem;
+  width: 80rem;
+}
+
+.ruleList {
+  padding-left: 3.2rem;
+}
+
+.ruleList :first-child {
+  margin-top: 0rem;
+}
+
+.prizeTable {
+  width: 60rem;
+  margin: auto;
+  border-spacing: 0.2rem;
+  border: #808080 1px solid;
+  margin-bottom: 1.6rem;
+  margin-top: 1.6rem;
+}
+
+.prizeTable td,
+.prizeTable th {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.ruleList li {
+  line-height: 1.4;
+  margin-top: 1.6rem;
+}
+
+.tableNote {
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
+  line-height: 1.4;
+}
