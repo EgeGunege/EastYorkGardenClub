@@ -8,17 +8,20 @@ import NewsLetters from "./NewsLetters";
 import About from "./About";
 import "./css/general.css";
 import "./css/mainPage/index.css";
-import { LogoFacebook } from 'react-ionicons'
-import MeetingsDetail from "./MeetingsDetail"
+import { LogoFacebook } from "react-ionicons";
+import MeetingsDetail from "./MeetingsDetail";
 import FlowerShows from "./FlowerShows";
+import FlowerShowsRules from "./FlowerShowsRules";
+import FlowerShowDefinitions from "./FlowerShowsDefinitions";
+import FlowerShowsHints from "./FlowerShowsHints";
 
 const MainPage = () => {
-    const [currentPage, setCurrentPage] = useState('');
-    const [meetingId, setMeetingId] = useState('');
+  const [currentPage, setCurrentPage] = useState("");
+  const [meetingId, setMeetingId] = useState("");
 
-  const handlePageChange = (newPage, meetingId=null) => {
-      setCurrentPage(newPage);
-      setMeetingId(meetingId);
+  const handlePageChange = (newPage, meetingId = null) => {
+    setCurrentPage(newPage);
+    setMeetingId(meetingId);
   };
 
   const renderPage = () => {
@@ -32,11 +35,22 @@ const MainPage = () => {
       case "news":
         return <NewsLetters onPageChange={handlePageChange} />;
       case "shows":
-        return <FlowerShows onPageChange={handlePageChange} />
+        return <FlowerShows onPageChange={handlePageChange} />;
       case "joinus":
         return <JoinUs onPageChange={handlePageChange} />;
       case "meetingDetail":
-        return <MeetingsDetail onPageChange={handlePageChange} meetingID={meetingId} />;
+        return (
+          <MeetingsDetail
+            onPageChange={handlePageChange}
+            meetingID={meetingId}
+          />
+        );
+      case "flowerRules":
+        return <FlowerShowsRules onPageChange={handlePageChange} />;
+      case "flowerDefinitions":
+        return <FlowerShowDefinitions onPageChange={handlePageChange} />;
+      case "flowerHints":
+        return <FlowerShowsHints onPageChange={handlePageChange} />;
       default:
         return <Sections onPageChange={handlePageChange} />;
     }
@@ -100,10 +114,10 @@ const MainPage = () => {
             target="_blank"
           >
             <LogoFacebook
-                color={'#505050'}
-                title={''}
-                height="2.4rem"
-                width="2.4rem"
+              color={"#505050"}
+              title={""}
+              height="2.4rem"
+              width="2.4rem"
             />
           </Link>
           <nav className="footer-nav">
