@@ -1,0 +1,60 @@
+/* **************************************** */
+/*  Below 1568px screen (desktop)*/
+/* **************************************** */
+
+@media (max-width: 98em) {
+  .heading-primary {
+    font-size: 5.2rem;
+  }
+}
+
+/* **************************************** */
+/*  Below 1344px screen (smaller desktop)*/
+/* **************************************** */
+
+@media (max-width: 84em) {
+  .hero {
+    background-color: #568f4a;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .hero-img {
+    background-image: url("src/img/gardening-main.jpg");
+    max-width: 102rem;
+    height: 100%;
+  }
+
+  .hero-container {
+  }
+
+  .hero-content-box {
+  }
+
+  .hero-content {
+  }
+
+  /* .heading-primary {
+    font-size: 5.2rem;
+  } */
+}
+
+/* **************************************** */
+/*  Below 1200x screen (landscape Tablets)*/
+/* **************************************** */
+
+/* **************************************** */
+/*  Below 944px screen (Tablets)*/
+/* **************************************** */
+
+/* **************************************** */
+/*  Below 704px screen (smaller Tablets)*/
+/* **************************************** */
+
+/* **************************************** */
+/*  Below 544px screen (phones)*/
+/* **************************************** */
+
+/* **************************************** */
+/*  Fixing safari flex box gap*/
+/* **************************************** */
