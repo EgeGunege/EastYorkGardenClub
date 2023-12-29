@@ -74,20 +74,19 @@
   padding-left: 0;
   margin-left: 0;
   bottom: 3.5rem;
-
 }
 .custom-link div {
-    margin-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
-    .rules-link li .custom-link:link,
-    .rules-link li .custom-link:visited {
-        font-size: 1.6rem;
-        color: #65305e;
-        text-decoration: none;
-        font-weight: 600;
-        margin-bottom: 3.2rem;
-    }
+.rules-link li .custom-link:link,
+.rules-link li .custom-link:visited {
+  font-size: 1.6rem;
+  color: #65305e;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+}
 
 .rules-link li .custom-link:hover,
 .rules-link li .custom-link:active {
