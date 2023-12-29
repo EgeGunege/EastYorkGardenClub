@@ -6,7 +6,7 @@
   font-size: 6rem;
   font-weight: 700;
   color: #333333;
-  width: 60rem;
+  width: 80rem;
   line-height: 1.4;
   margin-bottom: 4.8rem;
 }
@@ -66,4 +66,9 @@
 .meeting-link:hover,
 .meeting-link:active {
   color: #8f4b88;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
 }

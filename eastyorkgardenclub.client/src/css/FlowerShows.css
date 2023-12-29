@@ -2,6 +2,21 @@
   padding: 6.4rem 0 12.8rem 0;
 }
 
+.page-sections {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 4.8rem;
+}
+
+.information-section {
+  flex: 3;
+}
+
+.view-section {
+  flex: 7;
+}
+
 .flowershow-description {
   /* width: 80rem; */
   font-size: 1.8rem;
@@ -27,7 +42,7 @@
 .flowershow-btn,
 .flowershow-btn:visited {
   list-style: none;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 500;
   background-color: #f6f6f6;
   border-radius: 5px;
@@ -51,7 +66,34 @@
 }
 
 .flowershow-description-box {
-  border: 1.8px solid #cbcbcb;
-  padding: 4.8rem;
   margin-bottom: 9.6rem;
+}
+
+.rules-link {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  bottom: 3.5rem;
+}
+.custom-link div {
+  margin-bottom: 1.2rem;
+}
+
+.rules-link li .custom-link:link,
+.rules-link li .custom-link:visited {
+  font-size: 1.6rem;
+  color: #65305e;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+}
+
+.rules-link li .custom-link:hover,
+.rules-link li .custom-link:active {
+  color: #8f4b88;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
 }
