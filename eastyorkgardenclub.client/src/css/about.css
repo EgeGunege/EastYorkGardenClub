@@ -19,8 +19,6 @@
   color: #808080;
   line-height: 1.6;
   font-weight: 400;
-  margin-top: 1.6rem;
-  margin-bottom: 2.4rem;
 }
 
 .about-description :not(:last-child) {
@@ -41,9 +39,12 @@
   display: inline-block;
   font-size: 1.8rem;
   font-weight: 500;
+  margin-top: 8rem;
+}
+/* .button-place {
   position: absolute;
   bottom: 0;
-}
+} */
 
 .joinus-btn-about:hover,
 .joinus-btn-about:active {

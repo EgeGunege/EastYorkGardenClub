@@ -8,12 +8,13 @@ import NewsLetters from "./NewsLetters";
 import About from "./About";
 import "./css/general.css";
 import "./css/mainPage/index.css";
-import { LogoFacebook } from "react-ionicons";
+import { LogoFacebook, MenuOutline, CloseOutline } from "react-ionicons";
 import MeetingsDetail from "./MeetingsDetail";
 import FlowerShows from "./FlowerShows";
 import FlowerShowsRules from "./FlowerShowsRules";
 import FlowerShowDefinitions from "./FlowerShowsDefinitions";
 import FlowerShowsHints from "./FlowerShowsHints";
+import "./css/mainPage/MainQueries.css";
 
 const MainPage = () => {
   const [currentPage, setCurrentPage] = useState("");
@@ -66,7 +67,7 @@ const MainPage = () => {
 
   function Header() {
     return (
-      <header>
+      <header className="header nav-open">
         <Link onClick={() => setCurrentPage("home")}>
           <img src={Logo} alt="East York Garden Club Logo" className="logo" />
         </Link>
@@ -93,6 +94,26 @@ const MainPage = () => {
             </li>
           </ul>
         </nav>
+
+        <button className="btn-hamburger-menue">
+          <MenuOutline
+            className="icon-hamburger-menue"
+            color={"#333333"}
+            title={""}
+            height="4.8rem"
+            width="4.8rem"
+            style={{ backgroundColor: "#fff", border: "none" }}
+          />
+
+          <CloseOutline
+            className="icon-close-menue"
+            color={"#00000"}
+            title={""}
+            height="4.8rem"
+            width="4.8rem"
+            style={{ backgroundColor: "#fff", border: "none" }}
+          />
+        </button>
       </header>
     );
   }

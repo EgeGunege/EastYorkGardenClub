@@ -1,6 +1,7 @@
 import { Component } from "react";
 import "/src/css/general.css";
 import "/src/css/mainPage/index.css";
+
 import { MailOutline, LocationOutline } from "react-ionicons";
 
 class SectionContacts extends Component {

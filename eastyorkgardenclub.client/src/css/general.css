@@ -147,7 +147,7 @@ body {
 }
 
 .heading-description {
-  width: 80rem;
+  max-width: 80rem;
   font-size: 1.8rem;
   color: #808080;
   line-height: 1.6;

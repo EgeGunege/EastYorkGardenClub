@@ -1,0 +1,44 @@
+/* **************************************** */
+/*  Below 1200px screen (landscape Tablets)*/
+/* **************************************** */
+
+@media (max-width: 75em) {
+  html {
+    /* 9px/16px = 0.5625 */
+    font-size: 56.25%;
+  }
+  .grid--2-cols {
+    grid-template-columns: 1fr;
+    row-gap: 10rem;
+  }
+
+  .joinus-btn-about,
+  .joinus-btn-about:visited {
+    margin-top: 5rem;
+  }
+}
+
+/* **************************************** */
+/*  Below 944px screen (Tablets)*/
+/* **************************************** */
+
+@media (max-width: 59em) {
+  html {
+    /* 8px/16px = 0.5 */
+    font-size: 50%;
+  }
+}
+
+/* **************************************** */
+/*  Below 704px screen (smaller Tablets)*/
+/* **************************************** */
+@media (max-width: 44em) {
+}
+/* **************************************** */
+/*  Below 544px screen (phones)*/
+/* **************************************** */
+@media (max-width: 34em) {
+  .container {
+    padding: 0 8rem;
+  }
+}
