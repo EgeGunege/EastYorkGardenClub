@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import aboutImg from "./img/gardening-about.png";
 import "./css/About.css";
+import "./css/AboutQueries.css";
 
 class About extends Component {
   constructor(props) {

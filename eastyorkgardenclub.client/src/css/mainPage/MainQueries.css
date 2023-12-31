@@ -1,60 +1,190 @@
 /* **************************************** */
 /*  Below 1568px screen (desktop)*/
 /* **************************************** */
-
+/* 
 @media (max-width: 98em) {
   .heading-primary {
     font-size: 5.2rem;
   }
-}
+} */
 
 /* **************************************** */
-/*  Below 1344px screen (smaller desktop)*/
+/*  Below 1444px screen (smaller desktop)*/
 /* **************************************** */
 
-@media (max-width: 84em) {
-  .hero {
-    background-color: #568f4a;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .hero-img {
-    background-image: url("src/img/gardening-main.jpg");
-    max-width: 102rem;
-    height: 100%;
-  }
-
-  .hero-container {
+@media (max-width: 90em) {
+  .heading-primary {
+    font-size: 5.2rem;
   }
 
   .hero-content-box {
+    padding-left: 8rem;
   }
 
   .hero-content {
+    margin: 9.6rem 0;
   }
-
-  /* .heading-primary {
-    font-size: 5.2rem;
-  } */
 }
 
 /* **************************************** */
-/*  Below 1200x screen (landscape Tablets)*/
+/*  Below 1200px screen (landscape Tablets)*/
 /* **************************************** */
+
+@media (max-width: 75em) {
+  html {
+    /* 9px/16px = 0.5625 */
+    font-size: 56.25%;
+  }
+
+  .btn-hamburger-menue {
+    display: block;
+    z-index: 2;
+  }
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    transform: translateX(100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in;
+
+    /* 1. hide it visually */
+    opacity: 0;
+    /* 2. Make it unaccessible to mouse and keyboard */
+    pointer-events: none;
+    /* 3. Hide it from screen readers */
+    visibility: hidden;
+  }
+
+  /* .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  } */
+  .nav-open .icon-close-menue {
+    display: block;
+  }
+
+  .nav-open .icon-hamburger-menue {
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 2.4rem;
+  }
+  /* .hero {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+  }
+
+  .hero-img {
+    flex: 1;
+    background-image: url("src/img/gardening-main.jpg");
+    background-size: cover; 
+  }
+
+  .hero-container {
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 3rem;
+    width: 100%;
+
+  } */
+
+  .hero-content-box {
+    margin-left: 50%;
+    padding-left: 9.6rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+  }
+
+  .container {
+    padding: 0 9.6rem;
+  }
+
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 4.8rem;
+    column-gap: 4.8rem;
+  }
+
+  /* .meeting-img {
+    height: 50rem;
+  } */
+
+  .grid--2-cols {
+    grid-template-columns: 1fr;
+    row-gap: 4.8rem;
+  }
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    align-items: center;
+  }
+}
 
 /* **************************************** */
 /*  Below 944px screen (Tablets)*/
 /* **************************************** */
 
+@media (max-width: 59em) {
+  html {
+    /* 8px/16px = 0.5 */
+    font-size: 50%;
+  }
+}
+
 /* **************************************** */
 /*  Below 704px screen (smaller Tablets)*/
 /* **************************************** */
-
+@media (max-width: 44em) {
+}
 /* **************************************** */
 /*  Below 544px screen (phones)*/
 /* **************************************** */
+@media (max-width: 34em) {
+  .container {
+    padding: 0 8rem;
+  }
 
+  .grid--4-cols,
+  .grid--2-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .social-nav,
+  .footer-nav-list {
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .footer-nav-link::before {
+    content: "";
+    margin: 0;
+  }
+}
 /* **************************************** */
 /*  Fixing safari flex box gap*/
 /* **************************************** */

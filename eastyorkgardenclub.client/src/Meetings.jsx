@@ -34,7 +34,7 @@ class Meetings extends Component {
     const { meetings } = this.state;
 
     return (
-      <section className="section-meetings">
+      <section className="section-meetingspage">
         <div className="container">
           <nav className="breadcrumb">
             <ul>
