@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import DOMPurify from "dompurify";
+import AdobePDFViewer from "./AdobePDFViewer";
 import "./css/FlowerShows.css";
 import { ChevronForwardOutline } from "react-ionicons";
 
@@ -9,42 +10,35 @@ class FlowerShows extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      news: [],
+      shows: [],
       selectedPdf: null,
       pdfName: null,
-      searchTerm: "",
-      filteredNews: [],
-      years: [],
-      selectedYear: "",
-      currentPage: 1,
-      itemsPerPage: 15,
+      description: null,
     };
   }
 
   componentDidMount() {
-    this.fetchNews();
-    this.loadScript();
+    this.fetchShows();
   }
 
-  fetchNews = async () => {
+  fetchShows = async () => {
     try {
-      const response = await fetch("https://localhost:44345/api/NewsLetters");
+      const response = await fetch("https://localhost:44345/api/FlowerShow");
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      const years = Array.from(
-        new Set(data.map((item) => new Date(item.uploadDate).getFullYear())),
-      ).sort((a, b) => b - a);
       this.setState(
         {
-          news: data,
-          filteredNews: data,
-          years: years,
+          shows: data,
         },
         () => {
           if (data && data.length > 0) {
-            this.handlePdfClick(data[0].id, data[0].name);
+            this.handleShowPdfClick(
+              data[0].id,
+              data[0].name,
+              data[0].showDescription,
+            );
           }
         },
       );
@@ -53,82 +47,26 @@ class FlowerShows extends Component {
     }
   };
 
-  handlePdfClick = async (newsletterId, newsletterName) => {
+  handleShowPdfClick = async (showId, showName, showDesc) => {
     try {
       const response = await fetch(
-        `https://localhost:44345/api/NewsLetters/${newsletterId}`,
+        `https://localhost:44345/api/FlowerShow/${showId}`,
       );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
-      this.setState(
-        {
-          selectedPdf: pdfUrl,
-          pdfName: newsletterName,
-        },
-        () => {
-          const viewerContainer = document.getElementById("adobe-dc-view");
-          if (viewerContainer) {
-            while (viewerContainer.firstChild) {
-              viewerContainer.removeChild(viewerContainer.firstChild);
-            }
-          }
-
-          this.initAdobeViewer();
-        },
-      );
+      this.setState({
+        selectedPdf: pdfUrl,
+        pdfName: showName,
+        description: showDesc,
+      });
     } catch (error) {
       console.error("Fetch error: " + error.message);
     }
   };
 
-  loadScript = () => {
-    const isScriptLoaded = document.querySelector(
-      'script[src="https://acrobatservices.adobe.com/view-sdk/viewer.js"]',
-    );
-    if (isScriptLoaded) {
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://acrobatservices.adobe.com/view-sdk/viewer.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    script.onload = () => {
-      this.initAdobeViewer();
-    };
-  };
-
-  initAdobeViewer = () => {
-    const { selectedPdf, pdfName } = this.state;
-    const previewConfig = {
-      embedMode: "FULL_WINDOW",
-      defaultViewMode: "FIT_WIDTH",
-      showDownloadPDF: true,
-      showZoomControl: true,
-      showAnnotationTools: false,
-      enableFormFilling: false,
-      includePDFAnnotations: false,
-      showThumbnails: true,
-      showPrintPDF: true,
-    };
-
-    if (window.AdobeDC) {
-      var adobeDCView = new window.AdobeDC.View({
-        clientId: "c3020d79845b4af984c540bf6043d682",
-      });
-      adobeDCView.previewFile(
-        {
-          content: { location: { url: selectedPdf } },
-          metaData: { fileName: pdfName },
-        },
-        previewConfig,
-      );
-    }
-  };
   sanitizeAndFormatMessage = (message) => {
     if (message)
       return DOMPurify.sanitize(message.replace(/\n/g, "<br />"), {
@@ -176,12 +114,12 @@ class FlowerShows extends Component {
                   __html: this.sanitizeAndFormatMessage(content),
                 }}
               />
-              <p className="flowershow-description">
-                The May Flower Show takes place at our monthly meeting held on
-                Monday, May 15. Entry time is 6:30 p.m. to 7:15 p.m. Judging
-                begins at 7:30 p.m. sharp. Maximum of one entry per class per
-                entrant. Listed below are the categories for the show.
-              </p>
+              <p
+                className="flowershow-description"
+                dangerouslySetInnerHTML={{
+                  __html: this.sanitizeAndFormatMessage(this.state.description),
+                }}
+              ></p>
               <ul className="rules-link">
                 {links.map((ruleLink) => (
                   <li key={ruleLink.id}>
@@ -206,27 +144,29 @@ class FlowerShows extends Component {
             </div>
             <div className="view-section">
               <nav className="flowershow-nav">
-                <a className="flowershow-btn" href="">
-                  May Show
-                </a>
-
-                <a className="flowershow-btn" href="">
-                  Jun Show
-                </a>
-
-                <a className="flowershow-btn" href="">
-                  Annual Show
-                </a>
-                <a className="flowershow-btn" href="">
-                  September Show
-                </a>
+                {this.state.shows.map((show) => (
+                  <Link
+                    className="flowershow-btn"
+                    key={show.id}
+                    onClick={() =>
+                      this.handleShowPdfClick(
+                        show.id,
+                        show.name,
+                        show.showDescription,
+                      )
+                    }
+                  >
+                    {show.name}
+                  </Link>
+                ))}
               </nav>
               <div className="flowershow-description-box">
                 {this.state.selectedPdf && (
-                  <div
-                    id="adobe-dc-view"
-                    style={{ width: "100%", height: "87rem" }}
-                  ></div>
+                  <AdobePDFViewer
+                    uniqueId="adobe-dc-view-shows"
+                    pdfUrl={this.state.selectedPdf}
+                    pdfName={this.state.pdfName}
+                  />
                 )}
               </div>
             </div>

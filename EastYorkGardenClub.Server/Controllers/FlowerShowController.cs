@@ -23,7 +23,7 @@ namespace EastYorkGardenClub.Server.Controllers
         public async Task<ActionResult<IEnumerable<FlowerShow>>> GetShows()
         {
             var shows = await _context.Shows
-                                .OrderByDescending(s => s.Date)
+                                .OrderBy(s => s.Date)
                                 .Select(s => new FlowerShowDTO
                                 {
                                     ID = s.ID,
@@ -96,7 +96,7 @@ namespace EastYorkGardenClub.Server.Controllers
             _context.Shows.Add(show);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetNewsletter", new { id = show.ID }, show);
+            return CreatedAtAction("GetShows", new { id = show.ID }, show);
         }
         public class ShowsViewModel
         {
