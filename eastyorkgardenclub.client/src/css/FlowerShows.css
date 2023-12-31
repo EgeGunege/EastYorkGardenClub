@@ -34,11 +34,6 @@
   margin-bottom: 1.6rem;
 }
 
-.flowershow-nav::before {
-}
-.flowershow-nav::after {
-}
-
 .flowershow-btn,
 .flowershow-btn:visited {
   list-style: none;

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./css/NewsLetters.css";
 import { FunnelOutline } from "react-ionicons";
+import AdobePDFViewer from "./AdobePDFViewer";
 
 class NewsLetters extends Component {
   constructor(props) {
@@ -22,7 +23,6 @@ class NewsLetters extends Component {
 
   componentDidMount() {
     this.fetchNews();
-    this.loadScript();
   }
 
   fetchNews = async () => {
@@ -62,70 +62,12 @@ class NewsLetters extends Component {
       }
       const blob = await response.blob();
       const pdfUrl = URL.createObjectURL(blob);
-      this.setState(
-        {
-          selectedPdf: pdfUrl,
-          pdfName: newsletterName,
-        },
-        () => {
-          const viewerContainer = document.getElementById("adobe-dc-view");
-          if (viewerContainer) {
-            while (viewerContainer.firstChild) {
-              viewerContainer.removeChild(viewerContainer.firstChild);
-            }
-          }
-
-          this.initAdobeViewer();
-        },
-      );
+      this.setState({
+        selectedPdf: pdfUrl,
+        pdfName: newsletterName,
+      });
     } catch (error) {
       console.error("Fetch error: " + error.message);
-    }
-  };
-
-  loadScript = () => {
-    const isScriptLoaded = document.querySelector(
-      'script[src="https://acrobatservices.adobe.com/view-sdk/viewer.js"]',
-    );
-    if (isScriptLoaded) {
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://acrobatservices.adobe.com/view-sdk/viewer.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    script.onload = () => {
-      this.initAdobeViewer();
-    };
-  };
-
-  initAdobeViewer = () => {
-    const { selectedPdf, pdfName } = this.state;
-    const previewConfig = {
-      embedMode: "FULL_WINDOW",
-      defaultViewMode: "FIT_WIDTH",
-      showDownloadPDF: true,
-      showZoomControl: true,
-      showAnnotationTools: false,
-      enableFormFilling: false,
-      includePDFAnnotations: false,
-      showThumbnails: true,
-      showPrintPDF: true,
-    };
-
-    if (window.AdobeDC) {
-      var adobeDCView = new window.AdobeDC.View({
-        clientId: "c3020d79845b4af984c540bf6043d682",
-      });
-      adobeDCView.previewFile(
-        {
-          content: { location: { url: selectedPdf } },
-          metaData: { fileName: pdfName },
-        },
-        previewConfig,
-      );
     }
   };
 
@@ -230,10 +172,11 @@ class NewsLetters extends Component {
           <div className="grid newsletter-grid">
             <div className="news-pdfviewer">
               {this.state.selectedPdf && (
-                <div
-                  id="adobe-dc-view"
-                  style={{ width: "100%", height: "87rem" }}
-                ></div>
+                <AdobePDFViewer
+                  uniqueId="adobe-dc-view-news"
+                  pdfUrl={this.state.selectedPdf}
+                  pdfName={this.state.pdfName}
+                />
               )}
             </div>
             <div className="news-sidebar">
