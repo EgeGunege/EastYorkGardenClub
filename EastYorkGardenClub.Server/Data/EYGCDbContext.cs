@@ -16,5 +16,7 @@ namespace EastYorkGardenClub.Server.Data
         public DbSet<About> Abouts { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Home> Homes { get; set; }
+        public DbSet<FlowerShow> Shows { get; set; }
+        public DbSet<FSPage> FSPage { get; set; }
     }
 }
