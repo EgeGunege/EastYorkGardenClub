@@ -10,7 +10,7 @@
         public required string PostalCode{ get; set; }
         public required string Phone { get; set; }
         public required bool NewsSub { get; set; }
-        public required int PaymentTpye { get; set; }
+        public required int PaymentType { get; set; }
         public required int MembershipType { get; set; }
         public string? HearAboutUs { get; set;}
         public string? AgeGroup { get; set; }

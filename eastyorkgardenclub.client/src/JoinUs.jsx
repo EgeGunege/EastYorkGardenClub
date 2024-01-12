@@ -52,23 +52,34 @@ class JoinUs extends Component {
     this.setState({ [name]: value });
   };
 
-  handlePaymentChange = (selected) => {
-    this.setState((prevState) => ({
-      paymentMethod: {
-        ...prevState.paymentMethod,
-        [selected]: !prevState.paymentMethod[selected],
-      },
-    }));
-  };
+    handleExclusiveCheckboxChange = (e) => {
+        const { id, checked } = e.target;
 
-  handleMembershipChange = (selected) => {
-    this.setState((prevState) => ({
-      membershipType: {
-        ...prevState.membershipType,
-        [selected]: !prevState.membershipType[selected],
-      },
-    }));
-  };
+        // If an exclusive membership checkbox is checked, update the state accordingly
+        if (id === 'single-et' || id === 'family-et') {
+            this.setState({
+                paymentMethod: {
+                    cash: false,
+                    cheque: false
+                },
+                membershipType: {
+                    ...this.state.membershipType,
+                    single: false,
+                    family: false,
+                    [id]: checked
+                }
+            });
+        } else {
+            // Handle other checkboxes normally
+            this.setState({
+                paymentMethod: {
+                    ...this.state.paymentMethod,
+                    [id]: checked
+                }
+            });
+        }
+    };
+
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -187,7 +198,7 @@ class JoinUs extends Component {
                       id="cash"
                       name="cash"
                       checked={paymentMethod.cash}
-                      onChange={() => this.handlePaymentChange("cash")}
+                                        onChange={() => this.handleExclusiveCheckboxChange("cash")}
                     />
                     Cash
                   </label>
@@ -197,7 +208,7 @@ class JoinUs extends Component {
                       id="cheque"
                       name="cheque"
                       checked={paymentMethod.cheque}
-                      onChange={() => this.handlePaymentChange("cheque")}
+                                        onChange={() => this.handleExclusiveCheckboxChange("cheque")}
                     />
                     Cheque
                   </label>
@@ -207,7 +218,7 @@ class JoinUs extends Component {
                       id="single"
                       name="single"
                       checked={membershipType.single}
-                      onChange={() => this.handleMembershipChange("single")}
+                                        onChange={() => this.handleExclusiveCheckboxChange("single")}
                     />
                     Single ($20)
                   </label>
@@ -217,7 +228,7 @@ class JoinUs extends Component {
                       id="family"
                       name="family"
                       checked={membershipType.family}
-                      onChange={() => this.handleMembershipChange("family")}
+                                        onChange={() => this.handleExclusiveCheckboxChange("family")}
                     />
                     Family ($30)
                   </label>
@@ -227,10 +238,10 @@ class JoinUs extends Component {
                     <span>
                       ** Paying By E-transfer to{" "}
                       <a
-                        href="mailto:treasurer@yourorg.ca"
+                        href="mailto:treasurer@eygc.ca"
                         className="email-link"
                       >
-                        treasurer@yourorg.ca
+                        treasurer@eygc.ca
                       </a>
                     </span>
                   </div>
@@ -243,7 +254,7 @@ class JoinUs extends Component {
                       id="single-et"
                       name="singleEt"
                       checked={membershipType.singleEt}
-                      onChange={() => this.handleMembershipChange("singleEt")}
+                                        onChange={() => this.handleExclusiveCheckboxChange("singleEt")}
                     />
                     Single ($21)
                   </label>
@@ -253,7 +264,7 @@ class JoinUs extends Component {
                       id="family-et"
                       name="familyEt"
                       checked={membershipType.familyEt}
-                      onChange={() => this.handleMembershipChange("familyEt")}
+                                        onChange={() => this.handleExclusiveCheckboxChange("familyEt")}
                     />
                     Family ($31)
                   </label>
